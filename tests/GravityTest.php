@@ -9,8 +9,9 @@ final class GravityTest extends TestCase
 {
     const TEST_PLATO = 12;
     const TEST_SPECIFIC_GRAVITY = 1.049;
+    const TEST_BRIX = 12.15;
 
-    public function testSetPlatoWillReturnPlatoWithGetValue(): void
+    public function testSetPlatoWillReturnPlatoWithGetValueAndDefaultPreferences(): void
     {
         $gravity = new Gravity(plato: self::TEST_PLATO);
         $actual = $gravity->getValue();
@@ -33,6 +34,15 @@ final class GravityTest extends TestCase
         $gravity = new Gravity(plato: self::TEST_PLATO);
         $actual = $gravity->getSpecificGravity();
         $expected = self::TEST_SPECIFIC_GRAVITY;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetPlatoWillReturnBrixWithGetBrix(): void
+    {
+        $gravity = new Gravity(plato: self::TEST_PLATO);
+        $actual = $gravity->getBrix();
+        $expected = self::TEST_BRIX;
 
         $this->assertEquals($expected, $actual);
     }

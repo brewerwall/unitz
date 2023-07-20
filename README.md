@@ -7,10 +7,11 @@ TDB
 ### Use
 
 ```php
+// Create a new Gravity Object
 $gravity = new Gravity(plato: 12, preferences: ['Gravity' => 'Plato']);
 
 // Gets the Plato of our Gravity
-$plato = $this->getPlato();
+$plato = $gravity->getPlato();
 
 // Gets the Specific Gravity of our Gravity
 $specificGravity = $gravity->getSpecificGravity();
@@ -19,7 +20,7 @@ $specificGravity = $gravity->getSpecificGravity();
 $brix = $gravity->getBrix();
 
 // Gets our Preferred Unit of measure based on our preferences
-$plato = $this->getValue();
+$plato = $gravity->getValue();
 
 
 ```

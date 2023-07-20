@@ -32,6 +32,15 @@ class Gravity extends AbstractUnit
     }
 
     /**
+     * @param int $round
+     * @return float
+     */
+    public function getPlato(int $round = 2): float
+    {
+        return round($this->plato, $round);
+    }
+
+    /**
      * @param float $plato
      * @return $this
      */
@@ -42,6 +51,15 @@ class Gravity extends AbstractUnit
         $this->brix = $this->convertPlatoToBrix($plato);
 
         return $this;
+    }
+
+    /**
+     * @param int $round
+     * @return float
+     */
+    public function getSpecificGravity(int $round = 3): float
+    {
+        return round($this->specificGravity, $round);
     }
 
     /**
@@ -58,6 +76,15 @@ class Gravity extends AbstractUnit
     }
 
     /**
+     * @param int $round
+     * @return float
+     */
+    public function getBrix(int $round = 2): float
+    {
+        return round($this->brix, $round);
+    }
+
+    /**
      * @param float $brix
      * @return $this
      */
@@ -68,33 +95,6 @@ class Gravity extends AbstractUnit
         $this->brix = $brix;
 
         return $this;
-    }
-
-    /**
-     * @param int $round
-     * @return float
-     */
-    public function getPlato(int $round = 2): float
-    {
-        return round($this->plato, $round);
-    }
-
-    /**
-     * @param int $round
-     * @return float
-     */
-    public function getSpecificGravity(int $round = 3): float
-    {
-        return round($this->specificGravity, $round);
-    }
-
-    /**
-     * @param int $round
-     * @return float
-     */
-    public function getBrix(int $round = 2): float
-    {
-        return round($this->brix, $round);
     }
 
     private function convertPlatoToSpecificGravity(float $plato): float
@@ -121,9 +121,13 @@ class Gravity extends AbstractUnit
 
     private function convertBrixToPlato(float $brix): float
     {
+        $specificGravity = $this->convertBrixToSpecificGravity($brix);
+
+        return $this->convertSpecificGravityToPlato($specificGravity);
     }
 
     private function convertBrixToSpecificGravity(float $brix): float
     {
+        return ($brix * 0.004) + 1;
     }
 }
