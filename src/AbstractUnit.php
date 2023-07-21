@@ -2,6 +2,9 @@
 
 namespace Unitz;
 
+use ReflectionClass;
+use RuntimeException;
+
 abstract class AbstractUnit
 {
     public const DEFAULT_PREFERENCES = [
@@ -18,28 +21,32 @@ abstract class AbstractUnit
     /**
      * @param int|null $round
      * @return float
-     * @throws \Exception
+     * @throws \RuntimeException
      */
     public function getValue(int $round = null): float
     {
         $gatherMethod = $this->makeGatherMethod();
 
-        return $round ? $this->$gatherMethod($round) : $this->$gatherMethod();
+        if (method_exists($this, $gatherMethod)) {
+            return $round ? $this->$gatherMethod($round) : $this->$gatherMethod();
+        }
+
+        throw new RuntimeException("Unit '$gatherMethod' does not exist.");
     }
 
     /**
      * @return string
-     * @throws \Exception
+     * @throws \RuntimeException
      */
     private function makeGatherMethod(): string
     {
-        $reflection = new \ReflectionClass($this);
+        $reflection = new ReflectionClass($this);
         $classname = $reflection->getShortName();
 
         if (array_key_exists($classname, $this->preferences)) {
             return 'get' . $this->preferences[$classname];
         }
 
-        throw new \Exception("Preference for $classname has not been set.");
+        throw new RuntimeException("Preference for '$classname' has not been set.");
     }
 }

@@ -4,11 +4,11 @@ namespace Unitz;
 
 class Gravity extends AbstractUnit
 {
-    private ?float $plato = null;
+    private float $plato;
 
-    private ?float $specificGravity = null;
+    private float $specificGravity;
 
-    private ?float $brix = null;
+    private float $brix;
 
     public function __construct(
         float $plato = null,
@@ -114,9 +114,16 @@ class Gravity extends AbstractUnit
         return 259 - (259 / $specificGravity);
     }
 
+    /**
+     * Source:
+     * https://www.brewersfriend.com/brix-converter/
+     *
+     * @param float $specificGravity
+     * @return float
+     */
     private function convertSpecificGravityToBrix(float $specificGravity): float
     {
-        return ($specificGravity - 1) / 0.004;
+        return (((182.4601 * $specificGravity - 775.6821) * $specificGravity + 1262.7794) * $specificGravity - 669.5622);
     }
 
     private function convertBrixToPlato(float $brix): float
@@ -126,8 +133,15 @@ class Gravity extends AbstractUnit
         return $this->convertSpecificGravityToPlato($specificGravity);
     }
 
+    /**
+     * Source:
+     * https://www.brewersfriend.com/brix-converter/
+     *
+     * @param float $brix
+     * @return float
+     */
     private function convertBrixToSpecificGravity(float $brix): float
     {
-        return ($brix * 0.004) + 1;
+        return ($brix / (258.6 - (($brix / 258.2) * 227.1))) + 1;
     }
 }
