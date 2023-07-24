@@ -11,7 +11,8 @@ abstract class AbstractUnit
         'Gravity' => 'Plato',
         'Temperature' => 'Fahrenheit',
         'Volume' => 'Gallon',
-        'Pressure' => 'Psi'
+        'Pressure' => 'Psi',
+        'Weight' => 'Pound'
     ];
 
     private array $preferences;
