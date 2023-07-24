@@ -7,9 +7,9 @@ use Unitz\Gravity;
 
 final class GravityTest extends TestCase
 {
-    const TEST_PLATO = 12.1;
-    const TEST_SPECIFIC_GRAVITY = 1.049;
-    const TEST_BRIX = 12.15;
+    public const TEST_PLATO = 12.152961955125761;
+    public const TEST_SPECIFIC_GRAVITY = 1.0492327639471877;
+    public const TEST_BRIX = 12.204818625308235;
 
     public function testSetPlatoWillReturnPlatoWithGetValueAndDefaultPreferences(): void
     {
@@ -89,7 +89,8 @@ final class GravityTest extends TestCase
         $actual = $gravity->getValue();
         $expected = self::TEST_PLATO;
 
-        $this->assertEquals($expected, $actual);
+        // Due to differences in equations between brix and SG conversions there are differences at higher decimal places
+        $this->assertEquals(round($expected, 2), round($actual, 2));
     }
 
     public function testSetBrixWillReturnPlatoWithGetPlato(): void
@@ -98,7 +99,8 @@ final class GravityTest extends TestCase
         $actual = $gravity->getPlato();
         $expected = self::TEST_PLATO;
 
-        $this->assertEquals($expected, $actual);
+        // Due to differences in equations between brix and SG conversions there are differences at higher decimal places
+        $this->assertEquals(round($expected, 2), round($actual, 2));
     }
 
     public function testSetBrixWillReturnSpecificGravityWithGetSpecificGravity(): void
@@ -107,7 +109,8 @@ final class GravityTest extends TestCase
         $actual = $gravity->getSpecificGravity();
         $expected = self::TEST_SPECIFIC_GRAVITY;
 
-        $this->assertEquals($expected, $actual);
+        // Due to differences in equations between brix and SG conversions there are differences at higher decimal places
+        $this->assertEquals(round($expected, 4), round($actual, 4));
     }
 
     public function testSetBrixWillReturnBrixWithGetBrix(): void

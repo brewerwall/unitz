@@ -28,27 +28,27 @@ class Temperature extends AbstractUnit
     public function setFahrenheit(float $fahrenheit): self
     {
         $this->fahrenheit = $fahrenheit;
-        $this->celsius = $this->convertFahrenheitToCelsius($fahrenheit);
+        $this->celsius = self::convertFahrenheitToCelsius($fahrenheit);
 
         return $this;
     }
 
     /**
-     * @param int $round
+     * @param ?int $round
      * @return float
      */
-    public function getFahrenheit(int $round = 2): float
+    public function getFahrenheit(?int $round = null): float
     {
-        return round($this->fahrenheit, 2);
+        return $round ? round($this->fahrenheit, $round) : $this->fahrenheit;
     }
 
     /**
-     * @param int $round
+     * @param ?int $round
      * @return float
      */
-    public function getCelsius(int $round = 2): float
+    public function getCelsius(?int $round = 2): float
     {
-        return round($this->celsius, 2);
+        return $round ? round($this->celsius, $round) : $this->celsius;
     }
 
     /**
@@ -57,7 +57,7 @@ class Temperature extends AbstractUnit
      */
     public function setCelsius(float $celsius): self
     {
-        $this->fahrenheit = $this->convertCelsiusToFahrenheit($celsius);
+        $this->fahrenheit = self::convertCelsiusToFahrenheit($celsius);
         $this->celsius = $celsius;
 
         return $this;
@@ -67,7 +67,7 @@ class Temperature extends AbstractUnit
      * @param float $fahrenheit
      * @return float
      */
-    private function convertFahrenheitToCelsius(float $fahrenheit): float
+    public static function convertFahrenheitToCelsius(float $fahrenheit): float
     {
         return ($fahrenheit - 32) * 5 / 9;
     }
@@ -76,7 +76,7 @@ class Temperature extends AbstractUnit
      * @param float $celsius
      * @return float
      */
-    private function convertCelsiusToFahrenheit(float $celsius): float
+    public static function convertCelsiusToFahrenheit(float $celsius): float
     {
         return ($celsius * 9 / 5) + 32;
     }

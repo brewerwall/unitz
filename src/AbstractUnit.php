@@ -9,7 +9,8 @@ abstract class AbstractUnit
 {
     public const DEFAULT_PREFERENCES = [
         'Gravity' => 'Plato',
-        'Temperature' => 'Fahrenheit'
+        'Temperature' => 'Fahrenheit',
+        'Volume' => 'Gallon'
     ];
 
     private array $preferences;
@@ -24,12 +25,12 @@ abstract class AbstractUnit
      * @return float
      * @throws \RuntimeException
      */
-    public function getValue(int $round = null): float
+    public function getValue(?int $round = null): float
     {
         $gatherMethod = $this->makeGatherMethod();
 
         if (method_exists($this, $gatherMethod)) {
-            return $round ? $this->$gatherMethod($round) : $this->$gatherMethod();
+            return $this->$gatherMethod($round);
         }
 
         throw new RuntimeException("Unit '$gatherMethod' does not exist.");

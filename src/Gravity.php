@@ -32,12 +32,12 @@ class Gravity extends AbstractUnit
     }
 
     /**
-     * @param int $round
+     * @param ?int $round
      * @return float
      */
-    public function getPlato(int $round = 2): float
+    public function getPlato(?int $round = null): float
     {
-        return round($this->plato, $round);
+        return $round ? round($this->plato, $round) : $this->plato;
     }
 
     /**
@@ -47,19 +47,19 @@ class Gravity extends AbstractUnit
     public function setPlato(float $plato): self
     {
         $this->plato = $plato;
-        $this->specificGravity = $this->convertPlatoToSpecificGravity($plato);
-        $this->brix = $this->convertPlatoToBrix($plato);
+        $this->specificGravity = self::convertPlatoToSpecificGravity($plato);
+        $this->brix = self::convertPlatoToBrix($plato);
 
         return $this;
     }
 
     /**
-     * @param int $round
+     * @param ?int $round
      * @return float
      */
-    public function getSpecificGravity(int $round = 3): float
+    public function getSpecificGravity(?int $round = null): float
     {
-        return round($this->specificGravity, $round);
+        return $round ? round($this->specificGravity, $round) : $this->specificGravity;
     }
 
     /**
@@ -68,20 +68,20 @@ class Gravity extends AbstractUnit
      */
     public function setSpecificGravity(float $specificGravity): self
     {
-        $this->plato = $this->convertSpecificGravityToPlato($specificGravity);
+        $this->plato = self::convertSpecificGravityToPlato($specificGravity);
         $this->specificGravity = $specificGravity;
-        $this->brix = $this->convertSpecificGravityToBrix($specificGravity);
+        $this->brix = self::convertSpecificGravityToBrix($specificGravity);
 
         return $this;
     }
 
     /**
-     * @param int $round
+     * @param ?int $round
      * @return float
      */
-    public function getBrix(int $round = 2): float
+    public function getBrix(?int $round = null): float
     {
-        return round($this->brix, $round);
+        return $round ? round($this->brix, $round) : $this->brix;
     }
 
     /**
@@ -90,58 +90,59 @@ class Gravity extends AbstractUnit
      */
     public function setBrix(float $brix): self
     {
-        $this->plato = $this->convertBrixToPlato($brix);
-        $this->specificGravity = $this->convertBrixToSpecificGravity($brix);
+        $this->plato = self::convertBrixToPlato($brix);
+        $this->specificGravity = self::convertBrixToSpecificGravity($brix);
         $this->brix = $brix;
 
         return $this;
     }
 
-    private function convertPlatoToSpecificGravity(float $plato): float
+    public static function convertPlatoToSpecificGravity(float $plato): float
     {
         return 259 / (259 - $plato);
     }
 
-    private function convertPlatoToBrix(float $plato): float
+    public static function convertPlatoToBrix(float $plato): float
     {
-        $specificGravity = $this->convertPlatoToSpecificGravity($plato);
+        $specificGravity = self::convertPlatoToSpecificGravity($plato);
 
-        return $this->convertSpecificGravityToBrix($specificGravity);
+        return self::convertSpecificGravityToBrix($specificGravity);
     }
 
-    private function convertSpecificGravityToPlato(float $specificGravity): float
+    public static function convertSpecificGravityToPlato(float $specificGravity): float
     {
         return 259 - (259 / $specificGravity);
     }
 
     /**
      * Source:
-     * https://www.brewersfriend.com/brix-converter/
+     * https://homebrewacademy.com/specific-gravity-to-brix/
      *
      * @param float $specificGravity
      * @return float
      */
-    private function convertSpecificGravityToBrix(float $specificGravity): float
+    public static function convertSpecificGravityToBrix(float $specificGravity): float
     {
         return (((182.4601 * $specificGravity - 775.6821) * $specificGravity + 1262.7794) * $specificGravity - 669.5622);
     }
 
-    private function convertBrixToPlato(float $brix): float
+    public static function convertBrixToPlato(float $brix): float
     {
-        $specificGravity = $this->convertBrixToSpecificGravity($brix);
+        $specificGravity = self::convertBrixToSpecificGravity($brix);
 
-        return $this->convertSpecificGravityToPlato($specificGravity);
+        return self::convertSpecificGravityToPlato($specificGravity);
     }
 
     /**
      * Source:
-     * https://www.brewersfriend.com/brix-converter/
+     * https://homebrewacademy.com/specific-gravity-to-brix/
      *
      * @param float $brix
      * @return float
      */
-    private function convertBrixToSpecificGravity(float $brix): float
+    public static function convertBrixToSpecificGravity(float $brix): float
     {
         return ($brix / (258.6 - (($brix / 258.2) * 227.1))) + 1;
     }
+
 }

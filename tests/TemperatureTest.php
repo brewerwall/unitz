@@ -7,8 +7,8 @@ use Unitz\Temperature;
 
 final class TemperatureTest extends TestCase
 {
-    const TEST_CELSIUS = 23.89;
-    const TEST_FAHRENHEIT = 75;
+    public const TEST_CELSIUS = 23.89;
+    public const TEST_FAHRENHEIT = 75.002;
 
     public function testSetFahrenheitWillReturnFahrenheitWithGetValueAndDefaultPreferences(): void
     {
