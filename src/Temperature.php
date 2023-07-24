@@ -5,7 +5,6 @@ namespace Unitz;
 class Temperature extends AbstractUnit
 {
     private float $fahrenheit;
-
     private float $celsius;
 
     public function __construct(float $fahrenheit = null, float $celsius = null, array $preferences = [])

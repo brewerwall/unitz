@@ -10,7 +10,8 @@ abstract class AbstractUnit
     public const DEFAULT_PREFERENCES = [
         'Gravity' => 'Plato',
         'Temperature' => 'Fahrenheit',
-        'Volume' => 'Gallon'
+        'Volume' => 'Gallon',
+        'Pressure' => 'Psi'
     ];
 
     private array $preferences;
