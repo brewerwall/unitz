@@ -71,7 +71,7 @@ $kilogram = $weight->getValue();
 
 ### Rounding
 
-In each type's get method, there is the option pass in a precision of rounding. This also include the `getValue()`
+In each type's get method, there is the option to pass in a precision of rounding. This also includes the `getValue()`
 method that all units share.
 
 ```php
