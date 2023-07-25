@@ -1,14 +1,21 @@
 # Unitz
 
+### Introduction
+
+Unitz is a way to address easy conversions among various brewing/fermentation units. A utility
+that helps convert a unit to tall types and not specifically addressing specific conversions.
+
 ### Installation
 
-TDB
+```bash
+composer require brewerwall/unitz
+```
 
 ### Use
 
 ```php
 // Create a new Gravity Object
-$gravity = new Gravity(plato: 12, preferences: ['Gravity' => 'Plato']);
+$gravity = new Gravity(plato: 12);
 
 // Gets the Plato of our Gravity
 $plato = $gravity->getPlato();
@@ -23,4 +30,41 @@ $brix = $gravity->getBrix();
 $plato = $gravity->getValue();
 
 
+```
+
+### Available Units
+
+| Unit        | Types                                                               |
+|-------------|---------------------------------------------------------------------|
+| Gravity     | Plato<br/>SpecificGravity<br/>Brix                                  |
+| Pressure    | Psi<br/>Bar                                                         |
+| Temperature | Celsius<br/>Fahrenheit                                              |
+| Volumne     | Ounce<br/>Gallon<br/>Barrel<br/>Milliliter<br/>Liter<br/>Hectoliter |
+| Weight      | Ounce<br/>Pound<br/>Gram<br/>Kilogram                               |
+
+### Preferences
+
+By default, all units have a `getValue()` method that returns the users preference of unit type. There is a default
+preference set, but can be overridden when instantiating a new unit.
+
+##### Default
+
+```php
+[
+    'Gravity' => 'Plato',
+    'Temperature' => 'Fahrenheit',
+    'Volume' => 'Gallon',
+    'Pressure' => 'Psi',
+    'Weight' => 'Pound'
+]
+```
+
+##### Example
+
+```php
+// Create a new Weight Object
+$weight = new Weight(kilogram: 7.5, preferences: ['Weight' => 'Kilogram']);
+
+// Returns Kilogram since that is the overridden preference
+$kilogram = $weight->getValue();
 ```
