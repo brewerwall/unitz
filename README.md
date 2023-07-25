@@ -3,7 +3,7 @@
 ### Introduction
 
 Unitz is a way to address easy conversions among various brewing/fermentation units. A utility
-that helps convert a unit to tall types and not specifically addressing specific conversions.
+that helps convert a unit to all types and not specifically addressing specific conversions.
 
 ### Installation
 
@@ -67,4 +67,15 @@ $weight = new Weight(kilogram: 7.5, preferences: ['Weight' => 'Kilogram']);
 
 // Returns Kilogram since that is the overridden preference
 $kilogram = $weight->getValue();
+```
+
+### Rounding
+
+In each type's get method, there is the option pass in a precision of rounding. This also include the `getValue()`
+method that all units share.
+
+```php
+$weight = new Weight(kilogram: 7.5629145);
+
+$kilogram = $weight->getKilogram(3);  // $kilogram = 7.563
 ```
