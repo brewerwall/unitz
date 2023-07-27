@@ -1,5 +1,7 @@
 # Unitz
 
+![example workflow](https://github.com/brewerwall/unitz/actions/workflows/main.yml/badge.svg)
+
 ### Introduction
 
 Unitz is a way to address easy conversions among various brewing/fermentation units. A utility
