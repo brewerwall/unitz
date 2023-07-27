@@ -12,7 +12,8 @@ abstract class AbstractUnit
         'Temperature' => 'Fahrenheit',
         'Volume' => 'Gallon',
         'Pressure' => 'Psi',
-        'Weight' => 'Pound'
+        'Weight' => 'Pound',
+        'Color' => 'Srm',
     ];
 
     private array $preferences;

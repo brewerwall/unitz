@@ -41,6 +41,7 @@ $plato = $gravity->getValue();
 | Temperature | Celsius<br/>Fahrenheit                                              |
 | Volumne     | Ounce<br/>Gallon<br/>Barrel<br/>Milliliter<br/>Liter<br/>Hectoliter |
 | Weight      | Ounce<br/>Pound<br/>Gram<br/>Kilogram                               |
+| Color       | Srm<br/>Ebc<br/>Lovibond                                            |
 
 ### Preferences
 
@@ -56,6 +57,7 @@ preference set, but can be overridden when instantiating a new unit.
     'Volume' => 'Gallon',
     'Pressure' => 'Psi',
     'Weight' => 'Pound'
+    'Color' => 'Srm',
 ]
 ```
 
