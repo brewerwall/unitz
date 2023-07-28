@@ -16,6 +16,10 @@ class Gravity extends AbstractUnit
         float $brix = null,
         array $preferences = []
     ) {
+        if (!$this->hasOnlyOneValue([$plato, $specificGravity, $brix])) {
+            throw new \InvalidArgumentException('Only one Gravity type can be set at a time.');
+        }
+
         parent::__construct($preferences);
 
         if ($plato) {
@@ -97,11 +101,19 @@ class Gravity extends AbstractUnit
         return $this;
     }
 
+    /**
+     * @param float $plato
+     * @return float
+     */
     public static function convertPlatoToSpecificGravity(float $plato): float
     {
         return 259 / (259 - $plato);
     }
 
+    /**
+     * @param float $plato
+     * @return float
+     */
     public static function convertPlatoToBrix(float $plato): float
     {
         $specificGravity = self::convertPlatoToSpecificGravity($plato);
@@ -109,6 +121,10 @@ class Gravity extends AbstractUnit
         return self::convertSpecificGravityToBrix($specificGravity);
     }
 
+    /**
+     * @param float $specificGravity
+     * @return float
+     */
     public static function convertSpecificGravityToPlato(float $specificGravity): float
     {
         return 259 - (259 / $specificGravity);

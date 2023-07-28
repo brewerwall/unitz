@@ -16,6 +16,10 @@ class Weight extends AbstractUnit
         ?float $kilogram = null,
         array $preferences = []
     ) {
+        if (!$this->hasOnlyOneValue([$ounce, $pound, $gram, $kilogram])) {
+            throw new \InvalidArgumentException('Only one Weight type can be set at a time.');
+        }
+
         parent::__construct($preferences);
 
         if ($ounce) {

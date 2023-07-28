@@ -40,6 +40,22 @@ abstract class AbstractUnit
     }
 
     /**
+     * @param array $values
+     * @return bool
+     */
+    public function hasOnlyOneValue(array $values): bool
+    {
+        $count = 0;
+        foreach ($values as $value) {
+            if (!is_null($value)) {
+                $count++;
+            }
+        }
+
+        return $count === 1;
+    }
+
+    /**
      * @return string
      * @throws \RuntimeException
      */

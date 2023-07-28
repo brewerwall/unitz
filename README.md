@@ -58,7 +58,7 @@ preference set, but can be overridden when instantiating a new unit.
     'Temperature' => 'Fahrenheit',
     'Volume' => 'Gallon',
     'Pressure' => 'Psi',
-    'Weight' => 'Pound'
+    'Weight' => 'Pound',
     'Color' => 'Srm',
 ]
 ```

@@ -14,6 +14,10 @@ class Color extends AbstractUnit
         ?float $lovibond = null,
         array $preferences = []
     ) {
+        if (!$this->hasOnlyOneValue([$srm, $ebc, $lovibond])) {
+            throw new \InvalidArgumentException('Only one Color type can be set at a time.');
+        }
+
         parent::__construct($preferences);
 
         if ($srm) {
