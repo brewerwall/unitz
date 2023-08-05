@@ -2,7 +2,7 @@
 
 namespace Unitz;
 
-class Pressure extends AbstractUnit
+class Pressure extends AbstractUnitz
 {
     private float $bar;
     private float $psi;

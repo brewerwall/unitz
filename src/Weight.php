@@ -2,7 +2,7 @@
 
 namespace Unitz;
 
-class Weight extends AbstractUnit
+class Weight extends AbstractUnitz
 {
     private float $ounce;
     private float $pound;

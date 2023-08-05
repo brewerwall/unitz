@@ -2,7 +2,7 @@
 
 namespace Unitz;
 
-class Volume extends AbstractUnit
+class Volume extends AbstractUnitz
 {
     private float $ounce;
     private float $gallon;

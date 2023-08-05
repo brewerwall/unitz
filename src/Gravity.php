@@ -2,7 +2,7 @@
 
 namespace Unitz;
 
-class Gravity extends AbstractUnit
+class Gravity extends AbstractUnitz
 {
     private float $plato;
 

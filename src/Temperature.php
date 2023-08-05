@@ -2,7 +2,7 @@
 
 namespace Unitz;
 
-class Temperature extends AbstractUnit
+class Temperature extends AbstractUnitz
 {
     private float $fahrenheit;
     private float $celsius;

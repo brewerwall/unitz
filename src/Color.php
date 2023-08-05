@@ -2,7 +2,7 @@
 
 namespace Unitz;
 
-class Color extends AbstractUnit
+class Color extends AbstractUnitz
 {
     private float $srm;
     private float $ebc;
