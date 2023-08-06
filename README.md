@@ -13,7 +13,7 @@ that helps convert a unit to all types and not specifically addressing specific 
 composer require brewerwall/unitz
 ```
 
-### Use
+### Single Type Use
 
 ```php
 // Create a new Gravity Object
@@ -33,6 +33,26 @@ $plato = $gravity->getValue();
 
 
 ```
+
+### Service Provider Use
+
+You can inject the UnitzService class into your application. Setting the user's preferences as an argument in the
+constructor
+will allow you to use the `getValue()` method to get the user's preferred unit of measure.
+
+```php
+// Instantiate a new UnitzService in a Service Provider Pattern
+$unitService = new UnitzService(preferences: ['Temperature' => 'Celsius']);
+
+// Dependency injection of UnitzService within the application
+$temperature = $unitService->makeTemperature(fahrenheit: 72);
+
+// Output of getValue() based on the user's preferences
+$temperature->getValue(); // 22.222222222222
+
+// Output of getValue() based on the user's preferences with rounding
+$temperature->getValue(1); // 22.2
+````
 
 ### Available Units
 
