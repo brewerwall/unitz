@@ -52,7 +52,6 @@ $temperature->getValue(); // 22.222222222222
 
 // Output of getValue() based on the user's preferences with rounding
 $temperature->getValue(1); // 22.2
-````
 
 ### Available Units
 
