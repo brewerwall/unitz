@@ -3,56 +3,70 @@
 namespace Tests;
 
 use PHPUnit\Framework\TestCase;
-use Unitz\Color;
-use Unitz\Gravity;
-use Unitz\Pressure;
-use Unitz\Temperature;
 use Unitz\UnitzService;
-use Unitz\Volume;
-use Unitz\Weight;
 
 final class UnitzServiceTest extends TestCase
 {
-    private UnitzService $unitzService;
-
-    public function setUp(): void
+    private function makeUnitService(array $preferences = []): UnitzService
     {
-        $this->unitzService = new UnitzService();
+        return new UnitzService($preferences);
     }
 
-    public function testMakeColorWillReturnColor(): void
+    public function testMakeColorWillReturnColorWithPreference(): void
     {
-        $color = $this->unitzService->makeColor(srm: 12);
-        $this->assertInstanceOf(Color::class, $color);
+        $ebc = 12;
+        $color = $this->makeUnitService(['Color' => 'Ebc'])->makeColor(ebc: $ebc);
+        $expected = $ebc;
+        $actual = $color->getValue();
+        $this->assertEquals($expected, $actual);
     }
 
-    public function testMakeGravityWillReturnGravity(): void
+    public function testMakeGravityWillReturnGravityWithPreference(): void
     {
-        $gravity = $this->unitzService->makeGravity(plato: 12);
-        $this->assertInstanceOf(Gravity::class, $gravity);
+        $specificGravity = 1.048;
+        $gravity = $this->makeUnitService(['Gravity' => 'SpecificGravity'])->makeGravity(
+            specificGravity: $specificGravity
+        );
+        $expected = $specificGravity;
+        $actual = $gravity->getValue();
+        $this->assertEquals($expected, $actual);
     }
 
-    public function testMakePressureWillReturnPressure(): void
+    public function testMakePressureWillReturnPressureWithPreference(): void
     {
-        $pressure = $this->unitzService->makePressure(bar: 12);
-        $this->assertInstanceOf(Pressure::class, $pressure);
+        $bar = 3;
+        $pressure = $this->makeUnitService(['Pressure' => 'Bar'])->makePressure(bar: $bar);
+        $expected = $bar;
+        $actual = $pressure->getValue();
+        $this->assertEquals($expected, $actual);
     }
 
-    public function testMakeTemperatureWillReturnTemperature(): void
+    public function testMakeTemperatureWillReturnTemperatureWithPreference(): void
     {
-        $temperature = $this->unitzService->makeTemperature(celsius: 12);
-        $this->assertInstanceOf(Temperature::class, $temperature);
+        $celsius = 22;
+        $temperature = $this->makeUnitService(['Temperature' => 'Celsius'])->makeTemperature(
+            celsius: $celsius
+        );
+        $expected = $celsius;
+        $actual = $temperature->getValue();
+        $this->assertEquals($expected, $actual);
     }
 
-    public function testMakeVolumeWillReturnVolume(): void
+    public function testMakeVolumeWillReturnVolumeWithPreference(): void
     {
-        $volume = $this->unitzService->makeVolume(ounce: 12);
-        $this->assertInstanceOf(Volume::class, $volume);
+        $liter = 19;
+        $volume = $this->makeUnitService(['Volume' => 'Liter'])->makeVolume(liter: $liter);
+        $expected = $liter;
+        $actual = $volume->getValue();
+        $this->assertEquals($expected, $actual);
     }
 
-    public function testMakeWeightWillReturnWeight(): void
+    public function testMakeWeightWillReturnWeightWithPreference(): void
     {
-        $weight = $this->unitzService->makeWeight(ounce: 12);
-        $this->assertInstanceOf(Weight::class, $weight);
+        $kilogram = 6;
+        $weight = $this->makeUnitService(['Weight' => 'Kilogram'])->makeWeight(kilogram: $kilogram);
+        $expected = $kilogram;
+        $actual = $weight->getValue();
+        $this->assertEquals($expected, $actual);
     }
 }

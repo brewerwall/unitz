@@ -2,6 +2,8 @@
 
 namespace Unitz;
 
+use InvalidArgumentException;
+
 class Gravity extends AbstractUnitz
 {
     private float $plato;
@@ -17,7 +19,7 @@ class Gravity extends AbstractUnitz
         array $preferences = []
     ) {
         if (!$this->hasOnlyOneValue([$plato, $specificGravity, $brix])) {
-            throw new \InvalidArgumentException('Only one Gravity type can be set at a time.');
+            throw new InvalidArgumentException('Only one Gravity type can be set at a time.');
         }
 
         parent::__construct($preferences);

@@ -17,7 +17,7 @@ class BaseUnitz
 
     public function __construct(array $preferences = [])
     {
-        $this->preferences = array_merge($preferences, self::DEFAULT_PREFERENCES);
+        $this->preferences = array_merge(self::DEFAULT_PREFERENCES, $preferences);
     }
 
     public function getPreferences(): array

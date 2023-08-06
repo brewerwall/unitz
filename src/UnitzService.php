@@ -16,14 +16,14 @@ final class UnitzService extends BaseUnitz
     }
 
     /**
-     * @param float|null $sg
      * @param float|null $plato
+     * @param float|null $specificGravity
      * @param float|null $brix
      * @return \Unitz\Gravity
      */
-    public function makeGravity(?float $sg = null, ?float $plato = null, ?float $brix = null): Gravity
+    public function makeGravity(?float $plato = null, ?float $specificGravity = null, ?float $brix = null): Gravity
     {
-        return new Gravity($sg, $plato, $brix, $this->getPreferences());
+        return new Gravity($plato, $specificGravity, $brix, $this->getPreferences());
     }
 
     /**
@@ -37,13 +37,13 @@ final class UnitzService extends BaseUnitz
     }
 
     /**
-     * @param float|null $celsius
      * @param float|null $fahrenheit
+     * * @param float|null $celsius
      * @return \Unitz\Temperature
      */
-    public function makeTemperature(?float $celsius = null, ?float $fahrenheit = null): Temperature
+    public function makeTemperature(?float $fahrenheit = null, ?float $celsius = null): Temperature
     {
-        return new Temperature($celsius, $fahrenheit, $this->getPreferences());
+        return new Temperature($fahrenheit, $celsius, $this->getPreferences());
     }
 
     /**
