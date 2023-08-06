@@ -2,7 +2,9 @@
 
 namespace Unitz;
 
-class Weight extends AbstractUnit
+use InvalidArgumentException;
+
+class Weight extends AbstractUnitz
 {
     private float $ounce;
     private float $pound;
@@ -17,7 +19,7 @@ class Weight extends AbstractUnit
         array $preferences = []
     ) {
         if (!$this->hasOnlyOneValue([$ounce, $pound, $gram, $kilogram])) {
-            throw new \InvalidArgumentException('Only one Weight type can be set at a time.');
+            throw new InvalidArgumentException('Only one Weight type can be set at a time.');
         }
 
         parent::__construct($preferences);

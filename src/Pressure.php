@@ -2,7 +2,9 @@
 
 namespace Unitz;
 
-class Pressure extends AbstractUnit
+use InvalidArgumentException;
+
+class Pressure extends AbstractUnitz
 {
     private float $bar;
     private float $psi;
@@ -10,7 +12,7 @@ class Pressure extends AbstractUnit
     public function __construct(?float $bar = null, ?float $psi = null, array $preferences = [])
     {
         if (!$this->hasOnlyOneValue([$bar, $psi])) {
-            throw new \InvalidArgumentException('Only one Pressure type can be set at a time.');
+            throw new InvalidArgumentException('Only one Pressure type can be set at a time.');
         }
 
         parent::__construct($preferences);

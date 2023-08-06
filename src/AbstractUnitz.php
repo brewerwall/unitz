@@ -5,24 +5,8 @@ namespace Unitz;
 use ReflectionClass;
 use RuntimeException;
 
-abstract class AbstractUnit
+abstract class AbstractUnitz extends BaseUnitz
 {
-    public const DEFAULT_PREFERENCES = [
-        'Gravity' => 'Plato',
-        'Temperature' => 'Fahrenheit',
-        'Volume' => 'Gallon',
-        'Pressure' => 'Psi',
-        'Weight' => 'Pound',
-        'Color' => 'Srm',
-    ];
-
-    private array $preferences;
-
-    public function __construct(array $preferences = [])
-    {
-        $this->preferences = array_merge($preferences, self::DEFAULT_PREFERENCES);
-    }
-
     /**
      * @param int|null $round
      * @return float
@@ -64,8 +48,8 @@ abstract class AbstractUnit
         $reflection = new ReflectionClass($this);
         $classname = $reflection->getShortName();
 
-        if (array_key_exists($classname, $this->preferences)) {
-            return 'get' . $this->preferences[$classname];
+        if (array_key_exists($classname, $this->getPreferences())) {
+            return 'get' . $this->getPreferences()[$classname];
         }
 
         throw new RuntimeException("Preference for '$classname' has not been set.");

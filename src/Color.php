@@ -2,7 +2,9 @@
 
 namespace Unitz;
 
-class Color extends AbstractUnit
+use InvalidArgumentException;
+
+class Color extends AbstractUnitz
 {
     private float $srm;
     private float $ebc;
@@ -15,7 +17,7 @@ class Color extends AbstractUnit
         array $preferences = []
     ) {
         if (!$this->hasOnlyOneValue([$srm, $ebc, $lovibond])) {
-            throw new \InvalidArgumentException('Only one Color type can be set at a time.');
+            throw new InvalidArgumentException('Only one Color type can be set at a time.');
         }
 
         parent::__construct($preferences);

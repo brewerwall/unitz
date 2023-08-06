@@ -2,7 +2,9 @@
 
 namespace Unitz;
 
-class Temperature extends AbstractUnit
+use InvalidArgumentException;
+
+class Temperature extends AbstractUnitz
 {
     private float $fahrenheit;
     private float $celsius;
@@ -10,7 +12,7 @@ class Temperature extends AbstractUnit
     public function __construct(float $fahrenheit = null, float $celsius = null, array $preferences = [])
     {
         if (!$this->hasOnlyOneValue([$fahrenheit, $celsius])) {
-            throw new \InvalidArgumentException('Only one Temperature type can be set at a time.');
+            throw new InvalidArgumentException('Only one Temperature type can be set at a time.');
         }
 
         parent::__construct($preferences);

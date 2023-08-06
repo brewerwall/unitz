@@ -2,7 +2,9 @@
 
 namespace Unitz;
 
-class Volume extends AbstractUnit
+use InvalidArgumentException;
+
+class Volume extends AbstractUnitz
 {
     private float $ounce;
     private float $gallon;
@@ -21,7 +23,7 @@ class Volume extends AbstractUnit
         array $preferences = []
     ) {
         if (!$this->hasOnlyOneValue([$ounce, $gallon, $barrel, $milliliter, $liter, $hectoliter])) {
-            throw new \InvalidArgumentException('Only one Volume type can be set at a time.');
+            throw new InvalidArgumentException('Only one Volume type can be set at a time.');
         }
 
         parent::__construct($preferences);
