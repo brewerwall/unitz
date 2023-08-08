@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Unitz\Pressure;
 
@@ -66,7 +67,7 @@ final class PressureTest extends TestCase
 
     public function testWillThrowExceptionWithNoValuesSet(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Only one Pressure type can be set at a time.');
 
         new Pressure();
@@ -74,9 +75,27 @@ final class PressureTest extends TestCase
 
     public function testWillThrowExceptionWithTooManyValuesSet(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Only one Pressure type can be set at a time.');
 
         new Pressure(bar: self::TEST_BAR, psi: self::TEST_PSI);
+    }
+
+    public function testWillSetUserValueAndReturnValue(): void
+    {
+        $pressure = new Pressure(userValue: self::TEST_BAR, preferences: ['Pressure' => 'Bar']);
+        $actual = $pressure->getValue();
+        $expected = self::TEST_BAR;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testWillSetUserValueAndReturnValueFromPreferenceFunction(): void
+    {
+        $pressure = new Pressure(userValue: self::TEST_BAR, preferences: ['Pressure' => 'Bar']);
+        $actual = $pressure->getBar();
+        $expected = self::TEST_BAR;
+
+        $this->assertEquals($expected, $actual);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Unitz\Weight;
 
@@ -175,7 +176,7 @@ final class WeightTest extends TestCase
 
     public function testWillThrowExceptionWithNoValuesSet(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Only one Weight type can be set at a time.');
 
         new Weight();
@@ -183,9 +184,27 @@ final class WeightTest extends TestCase
 
     public function testWillThrowExceptionWithTooManyValuesSet(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Only one Weight type can be set at a time.');
 
-        new Weight(pound: self::TEST_POUND, ounce: self::TEST_OUNCE);
+        new Weight(ounce: self::TEST_OUNCE, pound: self::TEST_POUND);
+    }
+
+    public function testWillSetUserValueAndReturnValue(): void
+    {
+        $weight = new Weight(userValue: self::TEST_GRAM, preferences: ['Weight' => 'Gram']);
+        $actual = $weight->getValue();
+        $expected = self::TEST_GRAM;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testWillSetUserValueAndReturnValueFromPreferenceFunction(): void
+    {
+        $volume = new Weight(userValue: self::TEST_GRAM, preferences: ['Weight' => 'Gram']);
+        $actual = $volume->getGram();
+        $expected = self::TEST_GRAM;
+
+        $this->assertEquals($expected, $actual);
     }
 }

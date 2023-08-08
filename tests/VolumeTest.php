@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Unitz\Volume;
 
@@ -361,7 +362,7 @@ final class VolumeTest extends TestCase
 
     public function testWillThrowExceptionWithNoValuesSet(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Only one Volume type can be set at a time.');
 
         new Volume();
@@ -369,9 +370,27 @@ final class VolumeTest extends TestCase
 
     public function testWillThrowExceptionWithTooManyValuesSet(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Only one Volume type can be set at a time.');
 
         new Volume(gallon: self::TEST_GALLON, liter: self::TEST_LITER);
+    }
+
+    public function testWillSetUserValueAndReturnValue(): void
+    {
+        $volume = new Volume(userValue: self::TEST_HECTOLITER, preferences: ['Volume' => 'Hectoliter']);
+        $actual = $volume->getValue();
+        $expected = self::TEST_HECTOLITER;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testWillSetUserValueAndReturnValueFromPreferenceFunction(): void
+    {
+        $volume = new Volume(userValue: self::TEST_HECTOLITER, preferences: ['Volume' => 'Hectoliter']);
+        $actual = $volume->getHectoliter();
+        $expected = self::TEST_HECTOLITER;
+
+        $this->assertEquals($expected, $actual);
     }
 }

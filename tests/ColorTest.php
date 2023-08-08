@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Unitz\Color;
 
@@ -94,7 +95,7 @@ final class ColorTest extends TestCase
 
     public function testWillThrowExceptionWithNoValuesSet(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Only one Color type can be set at a time.');
 
         new Color();
@@ -102,9 +103,27 @@ final class ColorTest extends TestCase
 
     public function testWillThrowExceptionWithTooManyValuesSet(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Only one Color type can be set at a time.');
 
         new Color(srm: self::TEST_SRM, ebc: self::TEST_EBC);
+    }
+
+    public function testWillSetUserValueAndReturnValue(): void
+    {
+        $color = new Color(userValue: self::TEST_SRM, preferences: ['Color' => 'Srm']);
+        $actual = $color->getValue();
+        $expected = self::TEST_SRM;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testWillSetUserValueAndReturnValueFromPreferenceFunction(): void
+    {
+        $color = new Color(userValue: self::TEST_SRM, preferences: ['Color' => 'Srm']);
+        $actual = $color->getSrm();
+        $expected = self::TEST_SRM;
+
+        $this->assertEquals($expected, $actual);
     }
 }
