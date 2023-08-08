@@ -61,14 +61,7 @@ abstract class AbstractUnitz extends BaseUnitz
      */
     private function makeGetterMethod(): string
     {
-        $reflection = new ReflectionClass($this);
-        $classname = $reflection->getShortName();
-
-        if (array_key_exists($classname, $this->getPreferences())) {
-            return 'get' . $this->getPreferences()[$classname];
-        }
-
-        throw new RuntimeException("Preference for '$classname' has not been set.");
+        return $this->makeMethod('get');
     }
 
     /**
@@ -77,11 +70,21 @@ abstract class AbstractUnitz extends BaseUnitz
      */
     private function makeSetterMethod(): string
     {
+        return $this->makeMethod('set');
+    }
+
+    /**
+     * @param string $prefix
+     * @return string
+     * @throws \RuntimeException
+     */
+    private function makeMethod(string $prefix): string
+    {
         $reflection = new ReflectionClass($this);
         $classname = $reflection->getShortName();
 
         if (array_key_exists($classname, $this->getPreferences())) {
-            return 'set' . $this->getPreferences()[$classname];
+            return $prefix . $this->getPreferences()[$classname];
         }
 
         throw new RuntimeException("Preference for '$classname' has not been set.");
