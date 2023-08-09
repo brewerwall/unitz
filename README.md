@@ -5,7 +5,7 @@
 ### Introduction
 
 Unitz is a way to address easy conversions among various brewing/fermentation units. A utility
-that helps convert a unit to all types and not specifically addressing specific conversions.
+that helps convert a unit to all types and agnostic to what type of unit it is.
 
 ### Installation
 
