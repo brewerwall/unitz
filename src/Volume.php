@@ -14,15 +14,16 @@ class Volume extends AbstractUnitz
     private float $hectoliter;
 
     public function __construct(
-        float $ounce = null,
-        float $gallon = null,
-        float $barrel = null,
-        float $milliliter = null,
-        float $liter = null,
-        float $hectoliter = null,
+        ?float $ounce = null,
+        ?float $gallon = null,
+        ?float $barrel = null,
+        ?float $milliliter = null,
+        ?float $liter = null,
+        ?float $hectoliter = null,
+        ?float $userValue = null,
         array $preferences = []
     ) {
-        if (!$this->hasOnlyOneValue([$ounce, $gallon, $barrel, $milliliter, $liter, $hectoliter])) {
+        if (!$this->hasOnlyOneValue([$ounce, $gallon, $barrel, $milliliter, $liter, $hectoliter, $userValue])) {
             throw new InvalidArgumentException('Only one Volume type can be set at a time.');
         }
 
@@ -50,6 +51,10 @@ class Volume extends AbstractUnitz
 
         if ($hectoliter) {
             $this->setHectoliter($hectoliter);
+        }
+
+        if ($userValue) {
+            $this->setValue($userValue);
         }
     }
 

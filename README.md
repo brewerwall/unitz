@@ -30,8 +30,6 @@ $brix = $gravity->getBrix();
 
 // Gets our Preferred Unit of measure based on our preferences
 $plato = $gravity->getValue();
-
-
 ```
 
 ### Service Provider Use
@@ -52,6 +50,46 @@ $temperature->getValue(); // 22.222222222222
 
 // Output of getValue() based on the user's preferences with rounding
 $temperature->getValue(1); // 22.2
+````
+
+### User Centric Unit Creation
+
+When setting a user's preference in the UnitService, you no longer need to specify what type of unit the user is
+inputting by using the `userValue` argument in the constructor of the Unit. If the user's value needs to change,
+the `setValue()` method will also accomplish the same idea.
+
+```php
+// Create a new Gravity Object
+$gravity = new Gravity(userValue: 12, preferences: ['Gravity' => 'Brix']);
+
+// Gets the Brix of our Gravity
+$brix = $gravity->getBrix();  // 12
+
+// Gets our Preferred Unit of measure based on our preferences
+$plato = $gravity->getValue(); // 12
+```
+
+### User Centric With Service Provider Use
+
+```php
+// Instantiate a new UnitzService in a Service Provider Pattern
+$unitService = new UnitzService(preferences: ['Temperature' => 'Fahrenheit']);
+
+// Dependency injection of UnitzService within the application and a user submitted form value
+$temperature = $unitService->makeTemperature(userValue: 72);
+
+// Output of getValue() based on the user's preferences
+$temperature->getValue(); // 72
+
+// Output of getCelsius() will return the same as getValue() since that's the user's preference
+$temperature->getFahrenheit(); // 72
+
+// Updating the user's temperature value will have the same effect.
+$temperature->setValue(76);
+
+// Values update as needed
+$temperature->getValue(); // 76
+$temperature->getFahrenheit(); // 76
 ````
 
 ### Available Units

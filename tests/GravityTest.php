@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Unitz\Gravity;
 
@@ -124,7 +125,7 @@ final class GravityTest extends TestCase
 
     public function testWillThrowExceptionWithNoValuesSet(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Only one Gravity type can be set at a time.');
 
         new Gravity();
@@ -132,9 +133,27 @@ final class GravityTest extends TestCase
 
     public function testWillThrowExceptionWithTooManyValuesSet(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Only one Gravity type can be set at a time.');
 
         new Gravity(plato: self::TEST_PLATO, specificGravity: self::TEST_SPECIFIC_GRAVITY);
+    }
+
+    public function testWillSetUserValueAndReturnValue(): void
+    {
+        $gravity = new Gravity(userValue: self::TEST_BRIX, preferences: ['Gravity' => 'Brix']);
+        $actual = $gravity->getValue();
+        $expected = self::TEST_BRIX;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testWillSetUserValueAndReturnValueFromPreferenceFunction(): void
+    {
+        $gravity = new Gravity(userValue: self::TEST_BRIX, preferences: ['Gravity' => 'Brix']);
+        $actual = $gravity->getBrix();
+        $expected = self::TEST_BRIX;
+
+        $this->assertEquals($expected, $actual);
     }
 }

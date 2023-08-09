@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Unitz\Temperature;
 
@@ -66,7 +67,7 @@ final class TemperatureTest extends TestCase
 
     public function testWillThrowExceptionWithNoValuesSet(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Only one Temperature type can be set at a time.');
 
         new Temperature();
@@ -74,9 +75,27 @@ final class TemperatureTest extends TestCase
 
     public function testWillThrowExceptionWithTooManyValuesSet(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Only one Temperature type can be set at a time.');
 
-        new Temperature(celsius: self::TEST_CELSIUS, fahrenheit: self::TEST_FAHRENHEIT);
+        new Temperature(fahrenheit: self::TEST_FAHRENHEIT, celsius: self::TEST_CELSIUS);
+    }
+
+    public function testWillSetUserValueAndReturnValue(): void
+    {
+        $temperature = new Temperature(userValue: self::TEST_CELSIUS, preferences: ['Temperature' => 'Celsius']);
+        $actual = $temperature->getValue();
+        $expected = self::TEST_CELSIUS;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testWillSetUserValueAndReturnValueFromPreferenceFunction(): void
+    {
+        $temperature = new Temperature(userValue: self::TEST_CELSIUS, preferences: ['Temperature' => 'Celsius']);
+        $actual = $temperature->getCelsius();
+        $expected = self::TEST_CELSIUS;
+
+        $this->assertEquals($expected, $actual);
     }
 }

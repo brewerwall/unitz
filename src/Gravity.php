@@ -13,12 +13,13 @@ class Gravity extends AbstractUnitz
     private float $brix;
 
     public function __construct(
-        float $plato = null,
-        float $specificGravity = null,
-        float $brix = null,
+        ?float $plato = null,
+        ?float $specificGravity = null,
+        ?float $brix = null,
+        ?float $userValue = null,
         array $preferences = []
     ) {
-        if (!$this->hasOnlyOneValue([$plato, $specificGravity, $brix])) {
+        if (!$this->hasOnlyOneValue([$plato, $specificGravity, $brix, $userValue])) {
             throw new InvalidArgumentException('Only one Gravity type can be set at a time.');
         }
 
@@ -34,6 +35,10 @@ class Gravity extends AbstractUnitz
 
         if ($brix) {
             $this->setBrix($brix);
+        }
+
+        if ($userValue) {
+            $this->setValue($userValue);
         }
     }
 

@@ -16,9 +16,10 @@ class Weight extends AbstractUnitz
         ?float $pound = null,
         ?float $gram = null,
         ?float $kilogram = null,
+        ?float $userValue = null,
         array $preferences = []
     ) {
-        if (!$this->hasOnlyOneValue([$ounce, $pound, $gram, $kilogram])) {
+        if (!$this->hasOnlyOneValue([$ounce, $pound, $gram, $kilogram, $userValue])) {
             throw new InvalidArgumentException('Only one Weight type can be set at a time.');
         }
 
@@ -38,6 +39,10 @@ class Weight extends AbstractUnitz
 
         if ($kilogram) {
             $this->setKilogram($kilogram);
+        }
+
+        if ($userValue) {
+            $this->setValue($userValue);
         }
     }
 

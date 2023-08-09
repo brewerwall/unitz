@@ -9,9 +9,13 @@ class Temperature extends AbstractUnitz
     private float $fahrenheit;
     private float $celsius;
 
-    public function __construct(float $fahrenheit = null, float $celsius = null, array $preferences = [])
-    {
-        if (!$this->hasOnlyOneValue([$fahrenheit, $celsius])) {
+    public function __construct(
+        ?float $fahrenheit = null,
+        ?float $celsius = null,
+        ?float $userValue = null,
+        array $preferences = []
+    ) {
+        if (!$this->hasOnlyOneValue([$fahrenheit, $celsius, $userValue])) {
             throw new InvalidArgumentException('Only one Temperature type can be set at a time.');
         }
 
@@ -23,6 +27,10 @@ class Temperature extends AbstractUnitz
 
         if ($celsius) {
             $this->setCelsius($celsius);
+        }
+
+        if ($userValue) {
+            $this->setValue($userValue);
         }
     }
 

@@ -9,9 +9,13 @@ class Pressure extends AbstractUnitz
     private float $bar;
     private float $psi;
 
-    public function __construct(?float $bar = null, ?float $psi = null, array $preferences = [])
-    {
-        if (!$this->hasOnlyOneValue([$bar, $psi])) {
+    public function __construct(
+        ?float $bar = null,
+        ?float $psi = null,
+        ?float $userValue = null,
+        array $preferences = []
+    ) {
+        if (!$this->hasOnlyOneValue([$bar, $psi, $userValue])) {
             throw new InvalidArgumentException('Only one Pressure type can be set at a time.');
         }
 
@@ -23,6 +27,10 @@ class Pressure extends AbstractUnitz
 
         if ($psi) {
             $this->setPsi($psi);
+        }
+
+        if ($userValue) {
+            $this->setValue($userValue);
         }
     }
 

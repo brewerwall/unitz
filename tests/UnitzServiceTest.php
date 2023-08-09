@@ -21,6 +21,26 @@ final class UnitzServiceTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    public function testMakeColorWillSetColorWithPreferenceAndReturnTheSame(): void
+    {
+        $ebc = 12;
+        $color = $this->makeUnitService(['Color' => 'Ebc'])->makeColor(userValue: $ebc);
+        $expected = $ebc;
+        $actual = $color->getValue();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testMakeColorWillSetColorWithPreferenceAndNewSetValueAndReturnTheSame(): void
+    {
+        $ebc = 12;
+        $newEbc = 14;
+        $color = $this->makeUnitService(['Color' => 'Ebc'])->makeColor(userValue: $ebc);
+        $color->setValue($newEbc);
+        $expected = $newEbc;
+        $actual = $color->getEbc();
+        $this->assertEquals($expected, $actual);
+    }
+
     public function testMakeGravityWillReturnGravityWithPreference(): void
     {
         $specificGravity = 1.048;
@@ -32,12 +52,52 @@ final class UnitzServiceTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    public function testMakeGravityWillSetGravityWithPreferenceAndReturnTheSame(): void
+    {
+        $brix = 12;
+        $gravity = $this->makeUnitService(['Gravity' => 'Brix'])->makeGravity(userValue: $brix);
+        $expected = $brix;
+        $actual = $gravity->getValue();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testMakeGravityWillSetGravityWithPreferenceAndNewSetValueAndReturnTheSame(): void
+    {
+        $brix = 12;
+        $newBrix = 14;
+        $gravity = $this->makeUnitService(['Gravity' => 'Brix'])->makeGravity(userValue: $brix);
+        $gravity->setValue($newBrix);
+        $expected = $newBrix;
+        $actual = $gravity->getBrix();
+        $this->assertEquals($expected, $actual);
+    }
+
     public function testMakePressureWillReturnPressureWithPreference(): void
     {
         $bar = 3;
         $pressure = $this->makeUnitService(['Pressure' => 'Bar'])->makePressure(bar: $bar);
         $expected = $bar;
         $actual = $pressure->getValue();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testMakePressureWillSetPressureWithPreferenceAndReturnTheSame(): void
+    {
+        $bar = 3.5;
+        $pressure = $this->makeUnitService(['Pressure' => 'Bar'])->makePressure(userValue: $bar);
+        $expected = $bar;
+        $actual = $pressure->getValue();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testMakePressureWillSetPressureWithPreferenceAndNewSetValueAndReturnTheSame(): void
+    {
+        $bar = 3.5;
+        $newBar = 2.9;
+        $pressure = $this->makeUnitService(['Pressure' => 'Bar'])->makePressure(userValue: $bar);
+        $pressure->setValue($newBar);
+        $expected = $newBar;
+        $actual = $pressure->getBar();
         $this->assertEquals($expected, $actual);
     }
 
@@ -52,6 +112,26 @@ final class UnitzServiceTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    public function testMakeTemperatureWillSetTemperatureWithPreferenceAndReturnTheSame(): void
+    {
+        $celsius = 36;
+        $temperature = $this->makeUnitService(['Temperature' => 'Celsius'])->makeTemperature(userValue: $celsius);
+        $expected = $celsius;
+        $actual = $temperature->getValue();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testMakeTemperatureWillSetTemperatureWithPreferenceAndNewSetValueAndReturnTheSame(): void
+    {
+        $celsius = 36;
+        $newCelsius = 39.2;
+        $temperature = $this->makeUnitService(['Temperature' => 'Celsius'])->makeTemperature(userValue: $celsius);
+        $temperature->setValue($newCelsius);
+        $expected = $newCelsius;
+        $actual = $temperature->getCelsius();
+        $this->assertEquals($expected, $actual);
+    }
+
     public function testMakeVolumeWillReturnVolumeWithPreference(): void
     {
         $liter = 19;
@@ -61,12 +141,52 @@ final class UnitzServiceTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    public function testMakeVolumeWillSetVolumeWithPreferenceAndReturnTheSame(): void
+    {
+        $hectoliter = 2.7;
+        $volume = $this->makeUnitService(['Volume' => 'Hectoliter'])->makeVolume(userValue: $hectoliter);
+        $expected = $hectoliter;
+        $actual = $volume->getValue();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testMakeVolumeWillSetVolumeWithPreferenceAndNewSetValueAndReturnTheSame(): void
+    {
+        $hectoliter = 2.7;
+        $newHectoliter = 3.2;
+        $volume = $this->makeUnitService(['Volume' => 'Hectoliter'])->makeVolume(userValue: $hectoliter);
+        $volume->setValue($newHectoliter);
+        $expected = $newHectoliter;
+        $actual = $volume->getHectoliter();
+        $this->assertEquals($expected, $actual);
+    }
+
     public function testMakeWeightWillReturnWeightWithPreference(): void
     {
         $kilogram = 6;
         $weight = $this->makeUnitService(['Weight' => 'Kilogram'])->makeWeight(kilogram: $kilogram);
         $expected = $kilogram;
         $actual = $weight->getValue();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testMakeWeightWillSetWeightWithPreferenceAndReturnTheSame(): void
+    {
+        $gram = 56;
+        $weight = $this->makeUnitService(['Weight' => 'Gram'])->makeWeight(userValue: $gram);
+        $expected = $gram;
+        $actual = $weight->getValue();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testMakeWeightWillSetWeightWithPreferenceAndNewSetValueAndReturnTheSame(): void
+    {
+        $gram = 56;
+        $newGram = 96;
+        $weight = $this->makeUnitService(['Weight' => 'Gram'])->makeWeight(userValue: $gram);
+        $weight->setValue($newGram);
+        $expected = $newGram;
+        $actual = $weight->getGram();
         $this->assertEquals($expected, $actual);
     }
 }
