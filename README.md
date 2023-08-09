@@ -62,12 +62,6 @@ the `setValue()` method will also accomplish the same idea.
 // Create a new Gravity Object
 $gravity = new Gravity(userValue: 12, preferences: ['Gravity' => 'Brix']);
 
-// Gets the Plato of our Gravity
-$plato = $gravity->getPlato();
-
-// Gets the Specific Gravity of our Gravity
-$specificGravity = $gravity->getSpecificGravity();
-
 // Gets the Brix of our Gravity
 $brix = $gravity->getBrix();  // 12
 
@@ -93,11 +87,9 @@ $temperature->getFahrenheit(); // 72
 // Updating the user's temperature value will have the same effect.
 $temperature->setValue(76);
 
+// Values update as needed
 $temperature->getValue(); // 76
 $temperature->getFahrenheit(); // 76
-
-// If then in the storage process you can specify the unit type you need
-$temperature->getCelsius(); // 24.444444444444
 ````
 
 ### Available Units
