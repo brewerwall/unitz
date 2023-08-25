@@ -69,7 +69,7 @@ $brix = $gravity->getBrix();  // 12
 $plato = $gravity->getValue(); // 12
 ```
 
-### User Centric With Service Provider Use
+### User Centric With Service Provider
 
 ```php
 // Instantiate a new UnitzService in a Service Provider Pattern
@@ -81,7 +81,7 @@ $temperature = $unitService->makeTemperature(userValue: 72);
 // Output of getValue() based on the user's preferences
 $temperature->getValue(); // 72
 
-// Output of getCelsius() will return the same as getValue() since that's the user's preference
+// Output of getFahrenheit() will return the same as getValue() since it's the user's preference
 $temperature->getFahrenheit(); // 72
 
 // Updating the user's temperature value will have the same effect.
