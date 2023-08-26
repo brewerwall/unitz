@@ -11,6 +11,7 @@ class BaseUnitz
         'Pressure' => 'Psi',
         'Weight' => 'Pound',
         'Color' => 'Srm',
+        'Time' => 'Minute',
     ];
 
     private array $preferences;
