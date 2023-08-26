@@ -90,6 +90,71 @@ final class TimeTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    // Second Conversions
+
+    public function testSetSecondWillReturnMillisecondWithGetMillisecond(): void
+    {
+        $gravity = new Time(second: self::TEST_SECOND);
+        $actual = $gravity->getMillisecond();
+        $expected = self::TEST_MILLISECOND;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetSecondWillReturnMinuteWithGetMinute(): void
+    {
+        $gravity = new Time(second: self::TEST_SECOND);
+        $actual = $gravity->getMinute();
+        $expected = self::TEST_MINUTE;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetSecondWillReturnSecondWithGetSecond(): void
+    {
+        $gravity = new Time(second: self::TEST_SECOND);
+        $actual = $gravity->getSecond();
+        $expected = self::TEST_SECOND;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetSecondWillReturnHourWithGetHour(): void
+    {
+        $gravity = new Time(second: self::TEST_SECOND);
+        $actual = $gravity->getHour();
+        $expected = self::TEST_HOUR;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetSecondWillReturnDayWithGetDay(): void
+    {
+        $gravity = new Time(second: self::TEST_SECOND);
+        $actual = $gravity->getDay();
+        $expected = self::TEST_DAY;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetSecondWillReturnMonthWithGetMonth(): void
+    {
+        $gravity = new Time(second: self::TEST_SECOND);
+        $actual = $gravity->getMonth();
+        $expected = self::TEST_MONTH;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetSecondWillReturnYearWithGetYear(): void
+    {
+        $gravity = new Time(second: self::TEST_SECOND);
+        $actual = $gravity->getMonth();
+        $expected = self::TEST_MONTH;
+
+        $this->assertEquals($expected, $actual);
+    }
+
     // Minute Conversions
 
     public function testSetMinuteWillReturnMinuteWithGetMinute(): void
