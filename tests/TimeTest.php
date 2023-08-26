@@ -25,6 +25,71 @@ final class TimeTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    // Millisecond Conversions
+
+    public function testSetMillisecondWillReturnMillisecondWithGetMillisecond(): void
+    {
+        $gravity = new Time(millisecond: self::TEST_MILLISECOND);
+        $actual = $gravity->getMillisecond();
+        $expected = self::TEST_MILLISECOND;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetMillisecondWillReturnMinuteWithGetMinute(): void
+    {
+        $gravity = new Time(millisecond: self::TEST_MILLISECOND);
+        $actual = $gravity->getMinute();
+        $expected = self::TEST_MINUTE;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetMillisecondWillReturnSecondWithGetSecond(): void
+    {
+        $gravity = new Time(millisecond: self::TEST_MILLISECOND);
+        $actual = $gravity->getSecond();
+        $expected = self::TEST_SECOND;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetMillisecondWillReturnHourWithGetHour(): void
+    {
+        $gravity = new Time(millisecond: self::TEST_MILLISECOND);
+        $actual = $gravity->getHour();
+        $expected = self::TEST_HOUR;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetMillisecondWillReturnDayWithGetDay(): void
+    {
+        $gravity = new Time(millisecond: self::TEST_MILLISECOND);
+        $actual = $gravity->getDay();
+        $expected = self::TEST_DAY;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetMillisecondWillReturnMonthWithGetMonth(): void
+    {
+        $gravity = new Time(millisecond: self::TEST_MILLISECOND);
+        $actual = $gravity->getMonth();
+        $expected = self::TEST_MONTH;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetMillisecondWillReturnYearWithGetYear(): void
+    {
+        $gravity = new Time(millisecond: self::TEST_MILLISECOND);
+        $actual = $gravity->getMonth();
+        $expected = self::TEST_MONTH;
+
+        $this->assertEquals($expected, $actual);
+    }
+
     // Minute Conversions
 
     public function testSetMinuteWillReturnMinuteWithGetMinute(): void
