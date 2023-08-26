@@ -349,4 +349,69 @@ final class TimeTest extends TestCase
 
         $this->assertEquals($expected, $actual);
     }
+
+    // Week Conversions
+
+    public function testSetWeekWillReturnMinuteWithGetMinute(): void
+    {
+        $gravity = new Time(week: self::TEST_WEEK);
+        $actual = $gravity->getMinute();
+        $expected = self::TEST_MINUTE;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetWeekWillReturnMillisecondWithGetMillisecond(): void
+    {
+        $gravity = new Time(week: self::TEST_WEEK);
+        $actual = $gravity->getMillisecond();
+        $expected = self::TEST_MILLISECOND;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetWeekWillReturnSecondWithGetSecond(): void
+    {
+        $gravity = new Time(week: self::TEST_WEEK);
+        $actual = $gravity->getSecond();
+        $expected = self::TEST_SECOND;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetWeekWillReturnHourWithGetHour(): void
+    {
+        $gravity = new Time(week: self::TEST_WEEK);
+        $actual = $gravity->getHour();
+        $expected = self::TEST_HOUR;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetWeekWillReturnDayWithGetDay(): void
+    {
+        $gravity = new Time(week: self::TEST_WEEK);
+        $actual = $gravity->getDay();
+        $expected = self::TEST_DAY;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetWeekWillReturnMonthWithGetMonth(): void
+    {
+        $gravity = new Time(week: self::TEST_WEEK);
+        $actual = $gravity->getMonth();
+        $expected = self::TEST_MONTH;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetWeekWillReturnYearWithGetYear(): void
+    {
+        $gravity = new Time(week: self::TEST_WEEK);
+        $actual = $gravity->getMonth();
+        $expected = self::TEST_MONTH;
+
+        $this->assertEquals($expected, $actual);
+    }
 }
