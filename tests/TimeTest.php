@@ -14,7 +14,6 @@ final class TimeTest extends TestCase
     public const TEST_DAY = 42;
     public const TEST_WEEK = 6;
     public const TEST_MONTH = 1.4;
-    public const TEST_YEAR = 0.11666666666666667;
 
     public function testSetMinuteWillReturnMinuteWithGetValueAndDefaultPreferences(): void
     {
