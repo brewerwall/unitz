@@ -94,14 +94,15 @@ $temperature->getFahrenheit(); // 76
 
 ### Available Units
 
-| Unit        | Types                                                               |
-|-------------|---------------------------------------------------------------------|
-| Gravity     | Plato<br/>SpecificGravity<br/>Brix                                  |
-| Pressure    | Psi<br/>Bar                                                         |
-| Temperature | Celsius<br/>Fahrenheit                                              |
-| Volumne     | Ounce<br/>Gallon<br/>Barrel<br/>Milliliter<br/>Liter<br/>Hectoliter |
-| Weight      | Ounce<br/>Pound<br/>Gram<br/>Kilogram                               |
-| Color       | Srm<br/>Ebc<br/>Lovibond                                            |
+| Unit        | Types                                                                          |
+|-------------|--------------------------------------------------------------------------------|
+| Gravity     | Plato<br/>SpecificGravity<br/>Brix                                             |
+| Pressure    | Psi<br/>Bar                                                                    |
+| Temperature | Celsius<br/>Fahrenheit                                                         |
+| Volumne     | Ounce<br/>Gallon<br/>Barrel<br/>Milliliter<br/>Liter<br/>Hectoliter            |
+| Weight      | Ounce<br/>Pound<br/>Gram<br/>Kilogram                                          |
+| Color       | Srm<br/>Ebc<br/>Lovibond                                                       |
+| Time        | Millisecond<br/>Second<br/>Minute<br/>Hour<br/>Day<br/>Week<br/>Month<br/>Year |
 
 ### Preferences
 
@@ -118,7 +119,8 @@ preference set, but can be overridden when instantiating a new unit.
     'Pressure' => 'Psi',
     'Weight' => 'Pound',
     'Color' => 'Srm',
-]
+    'Time' => 'Minute',
+];
 ```
 
 ##### Example
