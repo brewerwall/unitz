@@ -414,4 +414,69 @@ final class TimeTest extends TestCase
 
         $this->assertEquals($expected, $actual);
     }
+
+    // Month Conversions
+
+    public function testSetMonthWillReturnMinuteWithGetMinute(): void
+    {
+        $gravity = new Time(month: self::TEST_MONTH);
+        $actual = $gravity->getMinute();
+        $expected = self::TEST_MINUTE;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetMonthWillReturnMillisecondWithGetMillisecond(): void
+    {
+        $gravity = new Time(month: self::TEST_MONTH);
+        $actual = $gravity->getMillisecond();
+        $expected = self::TEST_MILLISECOND;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetMonthWillReturnSecondWithGetSecond(): void
+    {
+        $gravity = new Time(month: self::TEST_MONTH);
+        $actual = $gravity->getSecond();
+        $expected = self::TEST_SECOND;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetMonthWillReturnHourWithGetHour(): void
+    {
+        $gravity = new Time(month: self::TEST_MONTH);
+        $actual = $gravity->getHour();
+        $expected = self::TEST_HOUR;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetMonthWillReturnDayWithGetDay(): void
+    {
+        $gravity = new Time(month: self::TEST_MONTH);
+        $actual = $gravity->getDay();
+        $expected = self::TEST_DAY;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetMonthWillReturnMonthWithGetMonth(): void
+    {
+        $gravity = new Time(month: self::TEST_MONTH);
+        $actual = $gravity->getMonth();
+        $expected = self::TEST_MONTH;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetMonthWillReturnYearWithGetYear(): void
+    {
+        $gravity = new Time(month: self::TEST_MONTH);
+        $actual = $gravity->getMonth();
+        $expected = self::TEST_MONTH;
+
+        $this->assertEquals($expected, $actual);
+    }
 }
