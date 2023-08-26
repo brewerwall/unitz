@@ -189,4 +189,33 @@ final class UnitzServiceTest extends TestCase
         $actual = $weight->getGram();
         $this->assertEquals($expected, $actual);
     }
+
+    public function testMakeTimeWillReturnTimeWithPreference(): void
+    {
+        $second = 6;
+        $time = $this->makeUnitService(['Time' => 'Second'])->makeTime(second: $second);
+        $expected = $second;
+        $actual = $time->getValue();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testMakeTimeWillSetTimeWithPreferenceAndReturnTheSame(): void
+    {
+        $hour = 56;
+        $time = $this->makeUnitService(['Time' => 'Hour'])->makeTime(userValue: $hour);
+        $expected = $hour;
+        $actual = $time->getValue();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testMakeTimeWillSetTimeWithPreferenceAndNewSetValueAndReturnTheSame(): void
+    {
+        $hour = 56;
+        $newHour = 96;
+        $time = $this->makeUnitService(['Time' => 'Hour'])->makeTime(userValue: $hour);
+        $time->setValue($newHour);
+        $expected = $newHour;
+        $actual = $time->getHour();
+        $this->assertEquals($expected, $actual);
+    }
 }

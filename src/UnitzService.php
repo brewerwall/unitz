@@ -109,4 +109,41 @@ final class UnitzService extends BaseUnitz
     ): Weight {
         return new Weight($ounce, $pound, $gram, $kilogram, $userValue, $this->getPreferences());
     }
+
+    /**
+     * @param float|null $millisecond
+     * @param float|null $second
+     * @param float|null $minute
+     * @param float|null $hour
+     * @param float|null $day
+     * @param float|null $week
+     * @param float|null $month
+     * @param float|null $year
+     * @param float|null $userValue
+     * @return \Unitz\Time
+     */
+    public function makeTime(
+        ?float $millisecond = null,
+        ?float $second = null,
+        ?float $minute = null,
+        ?float $hour = null,
+        ?float $day = null,
+        ?float $week = null,
+        ?float $month = null,
+        ?float $year = null,
+        ?float $userValue = null
+    ): Time {
+        return new Time(
+            $millisecond,
+            $second,
+            $minute,
+            $hour,
+            $day,
+            $week,
+            $month,
+            $year,
+            $userValue,
+            $this->getPreferences()
+        );
+    }
 }
