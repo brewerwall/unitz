@@ -14,11 +14,12 @@ final class TimeTest extends TestCase
     public const TEST_DAY = 42;
     public const TEST_WEEK = 6;
     public const TEST_MONTH = 1.4;
+    public const TEST_YEAR = 0.11506849315068493;
 
     public function testSetMinuteWillReturnMinuteWithGetValueAndDefaultPreferences(): void
     {
-        $gravity = new Time(minute: self::TEST_MINUTE);
-        $actual = $gravity->getValue();
+        $time = new Time(minute: self::TEST_MINUTE);
+        $actual = $time->getValue();
         $expected = self::TEST_MINUTE;
 
         $this->assertEquals($expected, $actual);
@@ -28,8 +29,8 @@ final class TimeTest extends TestCase
 
     public function testSetMillisecondWillReturnMillisecondWithGetMillisecond(): void
     {
-        $gravity = new Time(millisecond: self::TEST_MILLISECOND);
-        $actual = $gravity->getMillisecond();
+        $time = new Time(millisecond: self::TEST_MILLISECOND);
+        $actual = $time->getMillisecond();
         $expected = self::TEST_MILLISECOND;
 
         $this->assertEquals($expected, $actual);
@@ -37,8 +38,8 @@ final class TimeTest extends TestCase
 
     public function testSetMillisecondWillReturnMinuteWithGetMinute(): void
     {
-        $gravity = new Time(millisecond: self::TEST_MILLISECOND);
-        $actual = $gravity->getMinute();
+        $time = new Time(millisecond: self::TEST_MILLISECOND);
+        $actual = $time->getMinute();
         $expected = self::TEST_MINUTE;
 
         $this->assertEquals($expected, $actual);
@@ -46,8 +47,8 @@ final class TimeTest extends TestCase
 
     public function testSetMillisecondWillReturnSecondWithGetSecond(): void
     {
-        $gravity = new Time(millisecond: self::TEST_MILLISECOND);
-        $actual = $gravity->getSecond();
+        $time = new Time(millisecond: self::TEST_MILLISECOND);
+        $actual = $time->getSecond();
         $expected = self::TEST_SECOND;
 
         $this->assertEquals($expected, $actual);
@@ -55,8 +56,8 @@ final class TimeTest extends TestCase
 
     public function testSetMillisecondWillReturnHourWithGetHour(): void
     {
-        $gravity = new Time(millisecond: self::TEST_MILLISECOND);
-        $actual = $gravity->getHour();
+        $time = new Time(millisecond: self::TEST_MILLISECOND);
+        $actual = $time->getHour();
         $expected = self::TEST_HOUR;
 
         $this->assertEquals($expected, $actual);
@@ -64,17 +65,26 @@ final class TimeTest extends TestCase
 
     public function testSetMillisecondWillReturnDayWithGetDay(): void
     {
-        $gravity = new Time(millisecond: self::TEST_MILLISECOND);
-        $actual = $gravity->getDay();
+        $time = new Time(millisecond: self::TEST_MILLISECOND);
+        $actual = $time->getDay();
         $expected = self::TEST_DAY;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetMillisecondWillReturnWeekWithGetWeek(): void
+    {
+        $time = new Time(millisecond: self::TEST_MILLISECOND);
+        $actual = $time->getWeek();
+        $expected = self::TEST_WEEK;
 
         $this->assertEquals($expected, $actual);
     }
 
     public function testSetMillisecondWillReturnMonthWithGetMonth(): void
     {
-        $gravity = new Time(millisecond: self::TEST_MILLISECOND);
-        $actual = $gravity->getMonth();
+        $time = new Time(millisecond: self::TEST_MILLISECOND);
+        $actual = $time->getMonth();
         $expected = self::TEST_MONTH;
 
         $this->assertEquals($expected, $actual);
@@ -82,9 +92,9 @@ final class TimeTest extends TestCase
 
     public function testSetMillisecondWillReturnYearWithGetYear(): void
     {
-        $gravity = new Time(millisecond: self::TEST_MILLISECOND);
-        $actual = $gravity->getMonth();
-        $expected = self::TEST_MONTH;
+        $time = new Time(millisecond: self::TEST_MILLISECOND);
+        $actual = $time->getYear();
+        $expected = self::TEST_YEAR;
 
         $this->assertEquals($expected, $actual);
     }
@@ -93,8 +103,8 @@ final class TimeTest extends TestCase
 
     public function testSetSecondWillReturnMillisecondWithGetMillisecond(): void
     {
-        $gravity = new Time(second: self::TEST_SECOND);
-        $actual = $gravity->getMillisecond();
+        $time = new Time(second: self::TEST_SECOND);
+        $actual = $time->getMillisecond();
         $expected = self::TEST_MILLISECOND;
 
         $this->assertEquals($expected, $actual);
@@ -102,8 +112,8 @@ final class TimeTest extends TestCase
 
     public function testSetSecondWillReturnMinuteWithGetMinute(): void
     {
-        $gravity = new Time(second: self::TEST_SECOND);
-        $actual = $gravity->getMinute();
+        $time = new Time(second: self::TEST_SECOND);
+        $actual = $time->getMinute();
         $expected = self::TEST_MINUTE;
 
         $this->assertEquals($expected, $actual);
@@ -111,8 +121,8 @@ final class TimeTest extends TestCase
 
     public function testSetSecondWillReturnSecondWithGetSecond(): void
     {
-        $gravity = new Time(second: self::TEST_SECOND);
-        $actual = $gravity->getSecond();
+        $time = new Time(second: self::TEST_SECOND);
+        $actual = $time->getSecond();
         $expected = self::TEST_SECOND;
 
         $this->assertEquals($expected, $actual);
@@ -120,8 +130,8 @@ final class TimeTest extends TestCase
 
     public function testSetSecondWillReturnHourWithGetHour(): void
     {
-        $gravity = new Time(second: self::TEST_SECOND);
-        $actual = $gravity->getHour();
+        $time = new Time(second: self::TEST_SECOND);
+        $actual = $time->getHour();
         $expected = self::TEST_HOUR;
 
         $this->assertEquals($expected, $actual);
@@ -129,17 +139,26 @@ final class TimeTest extends TestCase
 
     public function testSetSecondWillReturnDayWithGetDay(): void
     {
-        $gravity = new Time(second: self::TEST_SECOND);
-        $actual = $gravity->getDay();
+        $time = new Time(second: self::TEST_SECOND);
+        $actual = $time->getDay();
         $expected = self::TEST_DAY;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetSecondWillReturnWeekWithGetWeek(): void
+    {
+        $time = new Time(second: self::TEST_SECOND);
+        $actual = $time->getWeek();
+        $expected = self::TEST_WEEK;
 
         $this->assertEquals($expected, $actual);
     }
 
     public function testSetSecondWillReturnMonthWithGetMonth(): void
     {
-        $gravity = new Time(second: self::TEST_SECOND);
-        $actual = $gravity->getMonth();
+        $time = new Time(second: self::TEST_SECOND);
+        $actual = $time->getMonth();
         $expected = self::TEST_MONTH;
 
         $this->assertEquals($expected, $actual);
@@ -147,9 +166,9 @@ final class TimeTest extends TestCase
 
     public function testSetSecondWillReturnYearWithGetYear(): void
     {
-        $gravity = new Time(second: self::TEST_SECOND);
-        $actual = $gravity->getMonth();
-        $expected = self::TEST_MONTH;
+        $time = new Time(second: self::TEST_SECOND);
+        $actual = $time->getYear();
+        $expected = self::TEST_YEAR;
 
         $this->assertEquals($expected, $actual);
     }
@@ -158,8 +177,8 @@ final class TimeTest extends TestCase
 
     public function testSetMinuteWillReturnMinuteWithGetMinute(): void
     {
-        $gravity = new Time(minute: self::TEST_MINUTE);
-        $actual = $gravity->getMinute();
+        $time = new Time(minute: self::TEST_MINUTE);
+        $actual = $time->getMinute();
         $expected = self::TEST_MINUTE;
 
         $this->assertEquals($expected, $actual);
@@ -167,8 +186,8 @@ final class TimeTest extends TestCase
 
     public function testSetMinuteWillReturnMillisecondWithGetMillisecond(): void
     {
-        $gravity = new Time(minute: self::TEST_MINUTE);
-        $actual = $gravity->getMillisecond();
+        $time = new Time(minute: self::TEST_MINUTE);
+        $actual = $time->getMillisecond();
         $expected = self::TEST_MILLISECOND;
 
         $this->assertEquals($expected, $actual);
@@ -176,8 +195,8 @@ final class TimeTest extends TestCase
 
     public function testSetMinuteWillReturnSecondWithGetSecond(): void
     {
-        $gravity = new Time(minute: self::TEST_MINUTE);
-        $actual = $gravity->getSecond();
+        $time = new Time(minute: self::TEST_MINUTE);
+        $actual = $time->getSecond();
         $expected = self::TEST_SECOND;
 
         $this->assertEquals($expected, $actual);
@@ -185,8 +204,8 @@ final class TimeTest extends TestCase
 
     public function testSetMinuteWillReturnHourWithGetHour(): void
     {
-        $gravity = new Time(minute: self::TEST_MINUTE);
-        $actual = $gravity->getHour();
+        $time = new Time(minute: self::TEST_MINUTE);
+        $actual = $time->getHour();
         $expected = self::TEST_HOUR;
 
         $this->assertEquals($expected, $actual);
@@ -194,17 +213,26 @@ final class TimeTest extends TestCase
 
     public function testSetMinuteWillReturnDayWithGetDay(): void
     {
-        $gravity = new Time(minute: self::TEST_MINUTE);
-        $actual = $gravity->getDay();
+        $time = new Time(minute: self::TEST_MINUTE);
+        $actual = $time->getDay();
         $expected = self::TEST_DAY;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetMinuteWillReturnWeekWithGetWeek(): void
+    {
+        $time = new Time(minute: self::TEST_MINUTE);
+        $actual = $time->getWeek();
+        $expected = self::TEST_WEEK;
 
         $this->assertEquals($expected, $actual);
     }
 
     public function testSetMinuteWillReturnMonthWithGetMonth(): void
     {
-        $gravity = new Time(minute: self::TEST_MINUTE);
-        $actual = $gravity->getMonth();
+        $time = new Time(minute: self::TEST_MINUTE);
+        $actual = $time->getMonth();
         $expected = self::TEST_MONTH;
 
         $this->assertEquals($expected, $actual);
@@ -212,9 +240,9 @@ final class TimeTest extends TestCase
 
     public function testSetMinuteWillReturnYearWithGetYear(): void
     {
-        $gravity = new Time(minute: self::TEST_MINUTE);
-        $actual = $gravity->getMonth();
-        $expected = self::TEST_MONTH;
+        $time = new Time(minute: self::TEST_MINUTE);
+        $actual = $time->getYear();
+        $expected = self::TEST_YEAR;
 
         $this->assertEquals($expected, $actual);
     }
@@ -223,8 +251,8 @@ final class TimeTest extends TestCase
 
     public function testSetHourWillReturnMinuteWithGetMinute(): void
     {
-        $gravity = new Time(hour: self::TEST_HOUR);
-        $actual = $gravity->getMinute();
+        $time = new Time(hour: self::TEST_HOUR);
+        $actual = $time->getMinute();
         $expected = self::TEST_MINUTE;
 
         $this->assertEquals($expected, $actual);
@@ -232,8 +260,8 @@ final class TimeTest extends TestCase
 
     public function testSetHourWillReturnMillisecondWithGetMillisecond(): void
     {
-        $gravity = new Time(hour: self::TEST_HOUR);
-        $actual = $gravity->getMillisecond();
+        $time = new Time(hour: self::TEST_HOUR);
+        $actual = $time->getMillisecond();
         $expected = self::TEST_MILLISECOND;
 
         $this->assertEquals($expected, $actual);
@@ -241,8 +269,8 @@ final class TimeTest extends TestCase
 
     public function testSetHourWillReturnSecondWithGetSecond(): void
     {
-        $gravity = new Time(hour: self::TEST_HOUR);
-        $actual = $gravity->getSecond();
+        $time = new Time(hour: self::TEST_HOUR);
+        $actual = $time->getSecond();
         $expected = self::TEST_SECOND;
 
         $this->assertEquals($expected, $actual);
@@ -250,8 +278,8 @@ final class TimeTest extends TestCase
 
     public function testSetHourWillReturnHourWithGetHour(): void
     {
-        $gravity = new Time(hour: self::TEST_HOUR);
-        $actual = $gravity->getHour();
+        $time = new Time(hour: self::TEST_HOUR);
+        $actual = $time->getHour();
         $expected = self::TEST_HOUR;
 
         $this->assertEquals($expected, $actual);
@@ -259,17 +287,26 @@ final class TimeTest extends TestCase
 
     public function testSetHourWillReturnDayWithGetDay(): void
     {
-        $gravity = new Time(hour: self::TEST_HOUR);
-        $actual = $gravity->getDay();
+        $time = new Time(hour: self::TEST_HOUR);
+        $actual = $time->getDay();
         $expected = self::TEST_DAY;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetHourWillReturnWeekWithGetWeek(): void
+    {
+        $time = new Time(hour: self::TEST_HOUR);
+        $actual = $time->getWeek();
+        $expected = self::TEST_WEEK;
 
         $this->assertEquals($expected, $actual);
     }
 
     public function testSetHourWillReturnMonthWithGetMonth(): void
     {
-        $gravity = new Time(hour: self::TEST_HOUR);
-        $actual = $gravity->getMonth();
+        $time = new Time(hour: self::TEST_HOUR);
+        $actual = $time->getMonth();
         $expected = self::TEST_MONTH;
 
         $this->assertEquals($expected, $actual);
@@ -277,9 +314,9 @@ final class TimeTest extends TestCase
 
     public function testSetHourWillReturnYearWithGetYear(): void
     {
-        $gravity = new Time(hour: self::TEST_HOUR);
-        $actual = $gravity->getMonth();
-        $expected = self::TEST_MONTH;
+        $time = new Time(hour: self::TEST_HOUR);
+        $actual = $time->getYear();
+        $expected = self::TEST_YEAR;
 
         $this->assertEquals($expected, $actual);
     }
@@ -288,8 +325,8 @@ final class TimeTest extends TestCase
 
     public function testSetDayWillReturnMinuteWithGetMinute(): void
     {
-        $gravity = new Time(day: self::TEST_DAY);
-        $actual = $gravity->getMinute();
+        $time = new Time(day: self::TEST_DAY);
+        $actual = $time->getMinute();
         $expected = self::TEST_MINUTE;
 
         $this->assertEquals($expected, $actual);
@@ -297,8 +334,8 @@ final class TimeTest extends TestCase
 
     public function testSetDayWillReturnMillisecondWithGetMillisecond(): void
     {
-        $gravity = new Time(day: self::TEST_DAY);
-        $actual = $gravity->getMillisecond();
+        $time = new Time(day: self::TEST_DAY);
+        $actual = $time->getMillisecond();
         $expected = self::TEST_MILLISECOND;
 
         $this->assertEquals($expected, $actual);
@@ -306,8 +343,8 @@ final class TimeTest extends TestCase
 
     public function testSetDayWillReturnSecondWithGetSecond(): void
     {
-        $gravity = new Time(day: self::TEST_DAY);
-        $actual = $gravity->getSecond();
+        $time = new Time(day: self::TEST_DAY);
+        $actual = $time->getSecond();
         $expected = self::TEST_SECOND;
 
         $this->assertEquals($expected, $actual);
@@ -315,8 +352,8 @@ final class TimeTest extends TestCase
 
     public function testSetDayWillReturnHourWithGetHour(): void
     {
-        $gravity = new Time(day: self::TEST_DAY);
-        $actual = $gravity->getHour();
+        $time = new Time(day: self::TEST_DAY);
+        $actual = $time->getHour();
         $expected = self::TEST_HOUR;
 
         $this->assertEquals($expected, $actual);
@@ -324,17 +361,26 @@ final class TimeTest extends TestCase
 
     public function testSetDayWillReturnDayWithGetDay(): void
     {
-        $gravity = new Time(day: self::TEST_DAY);
-        $actual = $gravity->getDay();
+        $time = new Time(day: self::TEST_DAY);
+        $actual = $time->getDay();
         $expected = self::TEST_DAY;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetDayWillReturnWeekWithGetWeek(): void
+    {
+        $time = new Time(day: self::TEST_DAY);
+        $actual = $time->getWeek();
+        $expected = self::TEST_WEEK;
 
         $this->assertEquals($expected, $actual);
     }
 
     public function testSetDayWillReturnMonthWithGetMonth(): void
     {
-        $gravity = new Time(day: self::TEST_DAY);
-        $actual = $gravity->getMonth();
+        $time = new Time(day: self::TEST_DAY);
+        $actual = $time->getMonth();
         $expected = self::TEST_MONTH;
 
         $this->assertEquals($expected, $actual);
@@ -342,9 +388,9 @@ final class TimeTest extends TestCase
 
     public function testSetDayWillReturnYearWithGetYear(): void
     {
-        $gravity = new Time(day: self::TEST_DAY);
-        $actual = $gravity->getMonth();
-        $expected = self::TEST_MONTH;
+        $time = new Time(day: self::TEST_DAY);
+        $actual = $time->getYear();
+        $expected = self::TEST_YEAR;
 
         $this->assertEquals($expected, $actual);
     }
@@ -353,8 +399,8 @@ final class TimeTest extends TestCase
 
     public function testSetWeekWillReturnMinuteWithGetMinute(): void
     {
-        $gravity = new Time(week: self::TEST_WEEK);
-        $actual = $gravity->getMinute();
+        $time = new Time(week: self::TEST_WEEK);
+        $actual = $time->getMinute();
         $expected = self::TEST_MINUTE;
 
         $this->assertEquals($expected, $actual);
@@ -362,8 +408,8 @@ final class TimeTest extends TestCase
 
     public function testSetWeekWillReturnMillisecondWithGetMillisecond(): void
     {
-        $gravity = new Time(week: self::TEST_WEEK);
-        $actual = $gravity->getMillisecond();
+        $time = new Time(week: self::TEST_WEEK);
+        $actual = $time->getMillisecond();
         $expected = self::TEST_MILLISECOND;
 
         $this->assertEquals($expected, $actual);
@@ -371,8 +417,8 @@ final class TimeTest extends TestCase
 
     public function testSetWeekWillReturnSecondWithGetSecond(): void
     {
-        $gravity = new Time(week: self::TEST_WEEK);
-        $actual = $gravity->getSecond();
+        $time = new Time(week: self::TEST_WEEK);
+        $actual = $time->getSecond();
         $expected = self::TEST_SECOND;
 
         $this->assertEquals($expected, $actual);
@@ -380,8 +426,8 @@ final class TimeTest extends TestCase
 
     public function testSetWeekWillReturnHourWithGetHour(): void
     {
-        $gravity = new Time(week: self::TEST_WEEK);
-        $actual = $gravity->getHour();
+        $time = new Time(week: self::TEST_WEEK);
+        $actual = $time->getHour();
         $expected = self::TEST_HOUR;
 
         $this->assertEquals($expected, $actual);
@@ -389,17 +435,26 @@ final class TimeTest extends TestCase
 
     public function testSetWeekWillReturnDayWithGetDay(): void
     {
-        $gravity = new Time(week: self::TEST_WEEK);
-        $actual = $gravity->getDay();
+        $time = new Time(week: self::TEST_WEEK);
+        $actual = $time->getDay();
         $expected = self::TEST_DAY;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetWeekWillReturnWeekWithGetWeek(): void
+    {
+        $time = new Time(week: self::TEST_WEEK);
+        $actual = $time->getWeek();
+        $expected = self::TEST_WEEK;
 
         $this->assertEquals($expected, $actual);
     }
 
     public function testSetWeekWillReturnMonthWithGetMonth(): void
     {
-        $gravity = new Time(week: self::TEST_WEEK);
-        $actual = $gravity->getMonth();
+        $time = new Time(week: self::TEST_WEEK);
+        $actual = $time->getMonth();
         $expected = self::TEST_MONTH;
 
         $this->assertEquals($expected, $actual);
@@ -407,9 +462,9 @@ final class TimeTest extends TestCase
 
     public function testSetWeekWillReturnYearWithGetYear(): void
     {
-        $gravity = new Time(week: self::TEST_WEEK);
-        $actual = $gravity->getMonth();
-        $expected = self::TEST_MONTH;
+        $time = new Time(week: self::TEST_WEEK);
+        $actual = $time->getYear();
+        $expected = self::TEST_YEAR;
 
         $this->assertEquals($expected, $actual);
     }
@@ -418,8 +473,8 @@ final class TimeTest extends TestCase
 
     public function testSetMonthWillReturnMinuteWithGetMinute(): void
     {
-        $gravity = new Time(month: self::TEST_MONTH);
-        $actual = $gravity->getMinute();
+        $time = new Time(month: self::TEST_MONTH);
+        $actual = $time->getMinute();
         $expected = self::TEST_MINUTE;
 
         $this->assertEquals($expected, $actual);
@@ -427,8 +482,8 @@ final class TimeTest extends TestCase
 
     public function testSetMonthWillReturnMillisecondWithGetMillisecond(): void
     {
-        $gravity = new Time(month: self::TEST_MONTH);
-        $actual = $gravity->getMillisecond();
+        $time = new Time(month: self::TEST_MONTH);
+        $actual = $time->getMillisecond();
         $expected = self::TEST_MILLISECOND;
 
         $this->assertEquals($expected, $actual);
@@ -436,8 +491,8 @@ final class TimeTest extends TestCase
 
     public function testSetMonthWillReturnSecondWithGetSecond(): void
     {
-        $gravity = new Time(month: self::TEST_MONTH);
-        $actual = $gravity->getSecond();
+        $time = new Time(month: self::TEST_MONTH);
+        $actual = $time->getSecond();
         $expected = self::TEST_SECOND;
 
         $this->assertEquals($expected, $actual);
@@ -445,8 +500,8 @@ final class TimeTest extends TestCase
 
     public function testSetMonthWillReturnHourWithGetHour(): void
     {
-        $gravity = new Time(month: self::TEST_MONTH);
-        $actual = $gravity->getHour();
+        $time = new Time(month: self::TEST_MONTH);
+        $actual = $time->getHour();
         $expected = self::TEST_HOUR;
 
         $this->assertEquals($expected, $actual);
@@ -454,17 +509,26 @@ final class TimeTest extends TestCase
 
     public function testSetMonthWillReturnDayWithGetDay(): void
     {
-        $gravity = new Time(month: self::TEST_MONTH);
-        $actual = $gravity->getDay();
+        $time = new Time(month: self::TEST_MONTH);
+        $actual = $time->getDay();
         $expected = self::TEST_DAY;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetMonthWillReturnWeekWithGetWeek(): void
+    {
+        $time = new Time(month: self::TEST_MONTH);
+        $actual = $time->getWeek();
+        $expected = self::TEST_WEEK;
 
         $this->assertEquals($expected, $actual);
     }
 
     public function testSetMonthWillReturnMonthWithGetMonth(): void
     {
-        $gravity = new Time(month: self::TEST_MONTH);
-        $actual = $gravity->getMonth();
+        $time = new Time(month: self::TEST_MONTH);
+        $actual = $time->getMonth();
         $expected = self::TEST_MONTH;
 
         $this->assertEquals($expected, $actual);
@@ -472,9 +536,83 @@ final class TimeTest extends TestCase
 
     public function testSetMonthWillReturnYearWithGetYear(): void
     {
-        $gravity = new Time(month: self::TEST_MONTH);
-        $actual = $gravity->getMonth();
+        $time = new Time(month: self::TEST_MONTH);
+        $actual = $time->getYear();
+        $expected = self::TEST_YEAR;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    // Year Conversions
+
+    public function testSetYearWillReturnMinuteWithGetMinute(): void
+    {
+        $time = new Time(year: self::TEST_YEAR);
+        $actual = $time->getMinute();
+        $expected = self::TEST_MINUTE;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetYearWillReturnMillisecondWithGetMillisecond(): void
+    {
+        $time = new Time(year: self::TEST_YEAR);
+        $actual = $time->getMillisecond();
+        $expected = self::TEST_MILLISECOND;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetYearWillReturnSecondWithGetSecond(): void
+    {
+        $time = new Time(year: self::TEST_YEAR);
+        $actual = $time->getSecond();
+        $expected = self::TEST_SECOND;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetYearWillReturnHourWithGetHour(): void
+    {
+        $time = new Time(year: self::TEST_YEAR);
+        $actual = $time->getHour();
+        $expected = self::TEST_HOUR;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetYearWillReturnDayWithGetDay(): void
+    {
+        $time = new Time(year: self::TEST_YEAR);
+        $actual = $time->getDay();
+        $expected = self::TEST_DAY;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetYearWillReturnWeekWithGetWeek(): void
+    {
+        $time = new Time(year: self::TEST_YEAR);
+        $actual = $time->getWeek();
+        $expected = self::TEST_WEEK;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetYearWillReturnMonthWithGetMonth(): void
+    {
+        $time = new Time(year: self::TEST_YEAR);
+        $actual = $time->getMonth();
         $expected = self::TEST_MONTH;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetYearWillReturnYearWithGetYear(): void
+    {
+        $time = new Time(year: self::TEST_YEAR);
+        $actual = $time->getYear();
+        $expected = self::TEST_YEAR;
 
         $this->assertEquals($expected, $actual);
     }
