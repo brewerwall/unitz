@@ -25,23 +25,23 @@ class Weight extends AbstractUnitz
 
         parent::__construct($preferences);
 
-        if ($ounce) {
+        if (is_numeric($ounce)) {
             $this->setOunce($ounce);
         }
 
-        if ($pound) {
+        if (is_numeric($pound)) {
             $this->setPound($pound);
         }
 
-        if ($gram) {
+        if (is_numeric($gram)) {
             $this->setGram($gram);
         }
 
-        if ($kilogram) {
+        if (is_numeric($kilogram)) {
             $this->setKilogram($kilogram);
         }
 
-        if ($userValue) {
+        if (is_numeric($userValue)) {
             $this->setValue($userValue);
         }
     }

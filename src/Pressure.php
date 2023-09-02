@@ -21,15 +21,15 @@ class Pressure extends AbstractUnitz
 
         parent::__construct($preferences);
 
-        if ($bar) {
+        if (is_numeric($bar)) {
             $this->setBar($bar);
         }
 
-        if ($psi) {
+        if (is_numeric($psi)) {
             $this->setPsi($psi);
         }
 
-        if ($userValue) {
+        if (is_numeric($userValue)) {
             $this->setValue($userValue);
         }
     }

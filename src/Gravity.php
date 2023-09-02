@@ -25,19 +25,19 @@ class Gravity extends AbstractUnitz
 
         parent::__construct($preferences);
 
-        if ($plato) {
+        if (is_numeric($plato)) {
             $this->setPlato($plato);
         }
 
-        if ($specificGravity) {
+        if (is_numeric($specificGravity)) {
             $this->setSpecificGravity($specificGravity);
         }
 
-        if ($brix) {
+        if (is_numeric($brix)) {
             $this->setBrix($brix);
         }
 
-        if ($userValue) {
+        if (is_numeric($userValue)) {
             $this->setValue($userValue);
         }
     }
@@ -109,12 +109,14 @@ class Gravity extends AbstractUnitz
     }
 
     /**
+     * Source: Brewers Friend - https://www.brewersfriend.com/plato-to-sg-conversion-chart/
+     *
      * @param float $plato
      * @return float
      */
     public static function convertPlatoToSpecificGravity(float $plato): float
     {
-        return 259 / (259 - $plato);
+        return 1 + ($plato / (258.6 - (($plato / 258.2) * 227.1)));
     }
 
     /**
@@ -129,12 +131,14 @@ class Gravity extends AbstractUnitz
     }
 
     /**
+     * Source: Brewers Friend - https://www.brewersfriend.com/plato-to-sg-conversion-chart/
+     *
      * @param float $specificGravity
      * @return float
      */
     public static function convertSpecificGravityToPlato(float $specificGravity): float
     {
-        return 259 - (259 / $specificGravity);
+        return (-1 * 616.868) + (1111.14 * $specificGravity) - (630.272 * $specificGravity ** 2) + (135.997 * $specificGravity ** 3);
     }
 
     /**
