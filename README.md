@@ -155,8 +155,8 @@ ___
 
 #### Standard Reference Method (SRM)
 
-Calculates the Standard Reference Method (SRM) of a beer based on the weight of grain, color of grain, and volume of
-water.
+Standard Reference Method (SRM) is the final color of a beer based on the weight of grain, color of
+grain, and volume of water.
 
 ```php
 Beer::standardReferenceMethod(Weight $weight, Color $color, Volume $volume)
@@ -170,4 +170,25 @@ Beer::standardReferenceMethod(Weight $weight, Color $color, Volume $volume)
 
 ##### Returns
 
-- `Unitz/Color` 
+- `Unitz/Color` - Color of the beer
+
+---
+
+#### Malt Color Unit (MCU)
+
+Malt Color Units (MCU) is the color of each grain times the grain weight in pounds divided by the batch volume in
+gallons.
+
+```php
+Beer::maltColorUnit(Weight $weight, Color $color, Volume $volume)
+```
+
+##### Arguments
+
+- `Weight $weight` - Weight of the grain
+- `Color $color` - Color of the grain
+- `Volume $volume` - Volume of the water
+
+##### Returns
+
+- `float` - Malt Color Unit Value
