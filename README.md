@@ -159,7 +159,7 @@ Standard Reference Method (SRM) is the final color of a beer based on the weight
 grain, and volume of water.
 
 ```php
-Beer::standardReferenceMethod(Weight $weight, Color $color, Volume $volume)
+Beer::standardReferenceMethod(Weight $weight, Color $color, Volume $volume): Color
 ```
 
 ##### Arguments
@@ -170,7 +170,7 @@ Beer::standardReferenceMethod(Weight $weight, Color $color, Volume $volume)
 
 ##### Returns
 
-- `Unitz/Color` - Color of the beer
+- `Unitz/Color` - Color (Color) Value
 
 ---
 
@@ -180,7 +180,7 @@ Malt Color Units (MCU) is the color of each grain times the grain weight in poun
 gallons.
 
 ```php
-Beer::maltColorUnit(Weight $weight, Color $color, Volume $volume)
+Beer::maltColorUnit(Weight $weight, Color $color, Volume $volume): float
 ```
 
 ##### Arguments
@@ -191,4 +191,27 @@ Beer::maltColorUnit(Weight $weight, Color $color, Volume $volume)
 
 ##### Returns
 
-- `float` - Malt Color Unit Value
+- `float` - Malt Color Unit (MCU) Value
+
+---
+
+#### International Bitterness Units (IBU)
+
+International Bitterness Units (IBU) is the bitterness of the beer based on the alpha acid of the
+hops, weight of the hops, time in the boil, gravity of the wort, and volume of the wort.
+
+```php
+Beer::internationalBitternessUnits(float $alphaAcid, Weight $weight, Time $time, Gravity $gravity, Volume $volume)
+```
+
+##### Arguments
+
+- `float $alphaAcid` - Alpha Acid of the hops
+- `Weight $weight` - Weight of the hops
+- `Time $time` - Time in the boil
+- `Gravity $gravity` - Gravity of the wort
+- `Volume $volume` - Volume of the wort
+
+##### Returns
+
+- `float` - International Bitterness Units (IBU) Value
