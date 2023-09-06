@@ -2,7 +2,7 @@
 
 ![example workflow](https://github.com/brewerwall/unitz/actions/workflows/main.yml/badge.svg)
 
-### Introduction
+## Introduction
 
 Unitz is a way to address easy conversions among various brewing/fermentation units. A utility
 that helps convert a unit to all types and agnostic to what type of unit it is.
@@ -143,3 +143,29 @@ $weight = new Weight(kilogram: 7.5629145);
 
 $kilogram = $weight->getKilogram(3);  // $kilogram = 7.563
 ```
+
+## Calculate
+
+A library of calculations that can be use with various unitz classes.
+
+### Beer
+
+This class will calculate various beer related calculations.
+
+#### SRM
+
+Calculates the Standard Reference Method of a beer based on the weight, color, and volume of the grain.
+
+```php
+Beer::standardReferenceMethod(Weight $weight, Color $color, Volume $volume)
+```
+
+##### Arguments
+
+- Weight $weight - Weight of the grain
+- Color $color - Color of the grain
+- Volume $volume - Volume of the water
+
+##### Returns
+
+- Unitz/Color 
