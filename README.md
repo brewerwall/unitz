@@ -146,15 +146,17 @@ $kilogram = $weight->getKilogram(3);  // $kilogram = 7.563
 
 ## Calculate
 
-A library of calculations that can be use with various unitz classes.
+A library of calculations that can be used with various Unitz classes.
 
 ### Beer
 
-This class will calculate various beer related calculations.
+This class will calculate Beer related calculations.
+___
 
-#### SRM
+#### Standard Reference Method (SRM)
 
-Calculates the Standard Reference Method of a beer based on the weight, color, and volume of the grain.
+Calculates the Standard Reference Method (SRM) of a beer based on the weight of grain, color of grain, and volume of
+water.
 
 ```php
 Beer::standardReferenceMethod(Weight $weight, Color $color, Volume $volume)
@@ -162,10 +164,10 @@ Beer::standardReferenceMethod(Weight $weight, Color $color, Volume $volume)
 
 ##### Arguments
 
-- Weight $weight - Weight of the grain
-- Color $color - Color of the grain
-- Volume $volume - Volume of the water
+- `Weight $weight` - Weight of the grain
+- `Color $color` - Color of the grain
+- `Volume $volume` - Volume of the water
 
 ##### Returns
 
-- Unitz/Color 
+- `Unitz/Color` 
