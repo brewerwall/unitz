@@ -153,6 +153,30 @@ A library of calculations that can be used with various Unitz classes.
 This class will calculate Beer related calculations.
 ___
 
+#### Alcohol By Volume (ABV)
+
+Alcohol By Volume (ABV) is the alcohol content of the beer based on the original gravity, final gravity and formula
+version.
+Source of equation is
+at [Brewer's Friend](https://www.brewersfriend.com/2011/06/16/alcohol-by-volume-calculator-updated/).
+
+```php
+Beer::alcoholByVolume(Gravity $originalGravity, Gravity $finalGravity, string $formulaVersion = Beer::ABV_ALTERNATE_FORMULA): float
+```
+
+##### Arguments
+
+- `Gravity $originalGravity` - Original Gravity of the beer
+- `Gravity $finalGravity` - Final Gravity of the beer
+- `string $formulaVersion` - Formula ABV calculation: `Beer::ABV_STANDARD_FORMULA`
+  or `Beer::ABV_ALTERNATE_FORMULA`
+
+##### Returns
+
+- `float` - Alcohol By Volume (ABV) Value
+
+---
+
 #### Standard Reference Method (SRM)
 
 Standard Reference Method (SRM) is the final color of a beer based on the weight of grain, color of
@@ -215,3 +239,65 @@ Beer::internationalBitternessUnits(float $alphaAcid, Weight $weight, Time $time,
 ##### Returns
 
 - `float` - International Bitterness Units (IBU) Value
+
+---
+
+#### Alpha Acid Units (AAU)
+
+Alpha Acid Units (AAU) is the potential bitterness of the hops based on the alpha acid and weight.
+
+```php
+Beer::alphaAcidUnit(float $alphaAcid, Weight $weight): float
+```
+
+##### Arguments
+
+- `float $alphaAcid` - Alpha Acid of the hops
+- `Weight $weight` - Weight of the hops
+
+##### Returns
+
+- `float` - Alpha Acid Units (AAU) Value
+
+---
+
+#### Hop Utilization
+
+This is a hop utilization factor based on the Tinseth formula derived
+by [Glenn Tinseth](https://beersmith.com/blog/2011/02/10/beer-bitterness-and-ibus-with-glenn-tinseth-bshb-podcast-9/]).
+
+```php
+Beer::hopUtilization(Time $time, Gravity $gravity)
+```
+
+##### Arguments
+
+- `Time $time` - Time in the boil
+- `Gravity $gravity` - Gravity of the wort
+
+##### Returns
+
+- `float` - Hop Utilization Value
+
+---
+
+#### Calories
+
+Determines th number of calories in a beer based on the original gravity, final gravity and the volume of the
+beer consumed.
+
+```php
+Beer::calories(Gravity $originalGravity, Gravity $finalGravity, Volume $volume)
+```
+
+##### Arguments
+
+- `Gravity $originalGravity` - Original Gravity of the beer
+- `Gravity $finalGravity` - Final Gravity of the beer
+- `Volume $volume` - Volume of the beer consumed
+
+##### Returns
+
+- `float` - Calories
+
+---

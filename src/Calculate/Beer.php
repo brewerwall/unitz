@@ -15,6 +15,7 @@ class Beer
 {
     public const ABV_STANDARD_FORMULA = 'abv_standard';
     public const ABV_ALTERNATE_FORMULA = 'abv_alternate';
+    public const CALORIE_BASE_VOLUME_IN_OUNCE = 12;
 
     /**
      * Srm
@@ -100,14 +101,23 @@ class Beer
     }
 
     /**
+     * Calories per Volume.
+     *
      * @param \Unitz\Gravity $originalGravity
      * @param \Unitz\Gravity $finalGravity
+     * @param \Unitz\Volume $volume
      * @return float
-     * @throws \RuntimeException
      */
-    public static function calories(Gravity $originalGravity, Gravity $finalGravity): float
-    {
-        return ((6.9 * self::alcoholByWeight($originalGravity, $finalGravity)) + 4.0 * (self::realExtract(
+    public static function calories(
+        Gravity $originalGravity,
+        Gravity $finalGravity,
+        Volume $volume = new Volume(ounce: 12)
+    ): float {
+        $volumeMultiplier = $volume->getOunce() / self::CALORIE_BASE_VOLUME_IN_OUNCE;
+        return $volumeMultiplier * ((6.9 * self::alcoholByWeight(
+                        $originalGravity,
+                        $finalGravity
+                    )) + 4.0 * (self::realExtract(
                         $originalGravity,
                         $finalGravity
                     ) - 0.1)) * $finalGravity->getSpecificGravity() * 3.55;
@@ -133,6 +143,9 @@ class Beer
     /**
      * ABV
      *
+     * Source: https://www.brewersfriend.com/abv-calculator/
+     * Source: https://www.brewersfriend.com/2011/06/16/alcohol-by-volume-calculator-updated/
+     *
      * @param \Unitz\Gravity $originalGravity
      * @param \Unitz\Gravity $finalGravity
      * @param string $abvVersion
@@ -142,15 +155,15 @@ class Beer
     public static function alcoholByVolume(
         Gravity $originalGravity,
         Gravity $finalGravity,
-        string $abvVersion = self::ABV_ALTERNATE_FORMULA
+        string $formulaVersion = self::ABV_ALTERNATE_FORMULA
     ): float {
-        if ($abvVersion === self::ABV_ALTERNATE_FORMULA) {
+        if ($formulaVersion === self::ABV_ALTERNATE_FORMULA) {
             return (76.08 * ($originalGravity->getSpecificGravity() - $finalGravity->getSpecificGravity(
                         )) / (1.775 - $originalGravity->getSpecificGravity())) * ($finalGravity->getSpecificGravity(
                     ) / 0.794);
         }
 
-        if ($abvVersion === self::ABV_STANDARD_FORMULA) {
+        if ($formulaVersion === self::ABV_STANDARD_FORMULA) {
             return ($originalGravity->getSpecificGravity() - $finalGravity->getSpecificGravity()) * 131.25;
         }
 
