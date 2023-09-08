@@ -18,7 +18,8 @@ class Beer
     public const CALORIE_BASE_VOLUME_IN_OUNCE = 12;
 
     /**
-     * Srm
+     * Standard Reference Method (Srm) is the method for color assessment of wort or beer as published
+     * in the recommended methods of the American Society of Brewing Chemists
      *
      * @param \Unitz\Weight $weight
      * @param \Unitz\Color $color
@@ -34,6 +35,8 @@ class Beer
     }
 
     /**
+     * Malt Color Unit (MCU) is an equation that helps determine what color a beer would be.
+     *
      * @param \Unitz\Weight $weight
      * @param \Unitz\Color $color
      * @param \Unitz\Volume $volume
