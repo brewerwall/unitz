@@ -35,39 +35,39 @@ class Time extends AbstractUnitz
 
         parent::__construct($preferences);
 
-        if ($millisecond) {
+        if (is_numeric($millisecond)) {
             $this->setMillisecond($millisecond);
         }
 
-        if ($second) {
+        if (is_numeric($second)) {
             $this->setSecond($second);
         }
 
-        if ($minute) {
+        if (is_numeric($minute)) {
             $this->setMinute($minute);
         }
 
-        if ($hour) {
+        if (is_numeric($hour)) {
             $this->setHour($hour);
         }
 
-        if ($day) {
+        if (is_numeric($day)) {
             $this->setDay($day);
         }
 
-        if ($week) {
+        if (is_numeric($week)) {
             $this->setWeek($week);
         }
 
-        if ($month) {
+        if (is_numeric($month)) {
             $this->setMonth($month);
         }
 
-        if ($year) {
+        if (is_numeric($year)) {
             $this->setYear($year);
         }
 
-        if ($userValue) {
+        if (is_numeric($userValue)) {
             $this->setValue($userValue);
         }
     }

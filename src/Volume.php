@@ -29,31 +29,31 @@ class Volume extends AbstractUnitz
 
         parent::__construct($preferences);
 
-        if ($ounce) {
+        if (is_numeric($ounce)) {
             $this->setOunce($ounce);
         }
 
-        if ($gallon) {
+        if (is_numeric($gallon)) {
             $this->setGallon($gallon);
         }
 
-        if ($barrel) {
+        if (is_numeric($barrel)) {
             $this->setBarrel($barrel);
         }
 
-        if ($milliliter) {
+        if (is_numeric($milliliter)) {
             $this->setMilliliter($milliliter);
         }
 
-        if ($liter) {
+        if (is_numeric($liter)) {
             $this->setLiter($liter);
         }
 
-        if ($hectoliter) {
+        if (is_numeric($hectoliter)) {
             $this->setHectoliter($hectoliter);
         }
 
-        if ($userValue) {
+        if (is_numeric($userValue)) {
             $this->setValue($userValue);
         }
     }

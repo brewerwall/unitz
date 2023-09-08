@@ -21,15 +21,15 @@ class Temperature extends AbstractUnitz
 
         parent::__construct($preferences);
 
-        if ($fahrenheit) {
+        if (is_numeric($fahrenheit)) {
             $this->setFahrenheit($fahrenheit);
         }
 
-        if ($celsius) {
+        if (is_numeric($celsius)) {
             $this->setCelsius($celsius);
         }
 
-        if ($userValue) {
+        if (is_numeric($userValue)) {
             $this->setValue($userValue);
         }
     }

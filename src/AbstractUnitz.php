@@ -47,7 +47,7 @@ abstract class AbstractUnitz extends BaseUnitz
     {
         $count = 0;
         foreach ($values as $value) {
-            if (!is_null($value)) {
+            if (is_numeric($value)) {
                 $count++;
             }
         }

@@ -23,19 +23,19 @@ class Color extends AbstractUnitz
 
         parent::__construct($preferences);
 
-        if ($srm) {
+        if (is_numeric($srm)) {
             $this->setSrm($srm);
         }
 
-        if ($ebc) {
+        if (is_numeric($ebc)) {
             $this->setEbc($ebc);
         }
 
-        if ($lovibond) {
+        if (is_numeric($lovibond)) {
             $this->setLovibond($lovibond);
         }
 
-        if ($userValue) {
+        if (is_numeric($userValue)) {
             $this->setValue($userValue);
         }
     }

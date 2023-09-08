@@ -21,6 +21,9 @@ class BaseUnitz
         $this->preferences = array_merge(self::DEFAULT_PREFERENCES, $preferences);
     }
 
+    /**
+     * @return array
+     */
     public function getPreferences(): array
     {
         return $this->preferences;
