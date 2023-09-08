@@ -155,9 +155,8 @@ ___
 
 #### Alcohol By Volume (ABV)
 
-Alcohol By Volume (ABV) is the alcohol content of the beer based on the original gravity, final gravity and formula
-version.
-Source of equation is
+Alcohol By Volume (ABV) is the percent of alcohol content in the beer based on the original gravity, final gravity and
+formula version. Source of equation is
 at [Brewer's Friend](https://www.brewersfriend.com/2011/06/16/alcohol-by-volume-calculator-updated/).
 
 ```php
@@ -174,6 +173,26 @@ Beer::alcoholByVolume(Gravity $originalGravity, Gravity $finalGravity, string $f
 ##### Returns
 
 - `float` - Alcohol By Volume (ABV) Value
+
+---
+
+#### Alcohol By Weight (ABW)
+
+Alcohol By Weight (ABW) is weighing the amount of alcohol in a fixed volume of liquid and comparing it to the weight of
+pure water based on the original gravity and final gravity.
+
+```php
+Beer::alcoholByWeight(Gravity $originalGravity, Gravity $finalGravity): float
+```
+
+##### Arguments
+
+- `Gravity $originalGravity` - Original Gravity of the beer
+- `Gravity $finalGravity` - Final Gravity of the beer
+
+##### Returns
+
+- `float` - Alcohol By Weight (ABW) Value
 
 ---
 
@@ -301,3 +320,62 @@ Beer::calories(Gravity $originalGravity, Gravity $finalGravity, Volume $volume)
 - `float` - Calories
 
 ---
+
+#### Real Extract
+
+Real Extract (RE) is a precise calculation concerning the gravity of beer.
+Source of equation is [Craft Beer & Brewing](https://beerandbrewing.com/dictionary/ewOeMFnY4x/)
+
+```php
+Beer::realExtract(Gravity $originalGravity, Gravity $finalGravity)
+```
+
+##### Arguments
+
+- `Gravity $originalGravity` - Original Gravity of the beer
+- `Gravity $finalGravity` - Final Gravity of the beer
+
+##### Returns
+
+- `float` - Real Extract
+
+---
+
+#### Apparent Degree of Fermentation
+
+Apparent Degree of Fermentation (ADF) is a measure of the amount of sugar that has been converted to alcohol and carbon
+dioxide by yeast during fermentation
+
+```php
+Beer::apparentDegreeOfFermentation(Gravity $originalGravity, Gravity $finalGravity)
+```
+
+##### Arguments
+
+- `Gravity $originalGravity` - Original Gravity of the beer
+- `Gravity $finalGravity` - Final Gravity of the beer
+
+##### Returns
+
+- `float` - Apparent Degree of Fermentation
+
+---
+
+#### Gravity Correction
+
+Gravity Correction based on Temperature of Sample and Hydrometer Calibration.
+Source [Brewers Friend](https://www.brewersfriend.com/hydrometer-temp/)
+
+```php
+Beer::gravityCorrection(Gravity $gravity, Temperature $temperature, Temperature $calibrationTemperature)
+```
+
+##### Arguments
+
+- `Gravity $gravity` - Gravity of the Sample
+- `Temperature $temperature` - Temperature of the sample
+- `Temperature $calibrationTemperature` - Temperature hydrometer is calibrated to
+
+##### Returns
+
+- `Gravity` - Corrected Gravity of Sample

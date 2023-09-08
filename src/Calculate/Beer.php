@@ -172,7 +172,7 @@ class Beer
 
     /**
      * Determine the Real Extract value.
-     * http://hbd.org/ensmingr/.
+     * https://beerandbrewing.com/dictionary/ewOeMFnY4x/
      *
      * @param \Unitz\Gravity $originalGravity
      * @param \Unitz\Gravity $finalGravity
@@ -184,11 +184,13 @@ class Beer
     }
 
     /**
+     * Apparent Degree of Fermentation (ADF)
+     *
      * @param \Unitz\Gravity $originalGravity
      * @param \Unitz\Gravity $finalGravity
      * @return float
      */
-    public static function attenuation(Gravity $originalGravity, Gravity $finalGravity): float
+    public static function apparentDegreeOfFermentation(Gravity $originalGravity, Gravity $finalGravity): float
     {
         if ($originalGravity->getSpecificGravity() <= 1.0) {
             throw new RuntimeException('Original Gravity cannot be less than 1.0');
@@ -205,18 +207,20 @@ class Beer
      * @param \Unitz\Temperature $temperature
      * @param \Unitz\Gravity $gravity
      * @param \Unitz\Temperature $calibrateTemperature //The temperature in which your hydrometer is calibrated to.
-     * @return float
+     * @return \Unitz\Gravity
      */
     public static function gravityCorrection(
         Temperature $temperature,
         Gravity $gravity,
         Temperature $calibrateTemperature = new Temperature(fahrenheit: 59)
-    ): float {
-        return $gravity->getSpecificGravity() * ((1.00130346 - 0.000134722124 * $temperature->getFahrenheit(
+    ): Gravity {
+        $specificGravity = $gravity->getSpecificGravity() * ((1.00130346 - 0.000134722124 * $temperature->getFahrenheit(
                     ) + 0.00000204052596 * ($temperature->getFahrenheit(
                         ) ** 2) - 0.00000000232820948 * ($temperature->getFahrenheit(
                         ) ** 3)) / (1.00130346 - 0.000134722124 * $calibrateTemperature->getFahrenheit(
                     ) + 0.00000204052596 * ($calibrateTemperature->getFahrenheit(
                         ) ** 2) - 0.00000000232820948 * ($calibrateTemperature->getFahrenheit() ** 3)));
+
+        return new Gravity(specificGravity: $specificGravity);
     }
 }

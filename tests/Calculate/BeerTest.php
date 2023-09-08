@@ -150,7 +150,7 @@ final class BeerTest extends TestCase
         $originalGravity = new Gravity(specificGravity: 1.054);
         $finalGravity = new Gravity(specificGravity: 1.012);
         $expected = 0.7777777777777778;
-        $actual = Beer::attenuation($originalGravity, $finalGravity);
+        $actual = Beer::apparentDegreeOfFermentation($originalGravity, $finalGravity);
         $this->assertEquals($expected, $actual);
     }
 
@@ -161,7 +161,7 @@ final class BeerTest extends TestCase
 
         $originalGravity = new Gravity(specificGravity: 1);
         $finalGravity = new Gravity(specificGravity: 1.012);
-        Beer::attenuation($originalGravity, $finalGravity);
+        Beer::apparentDegreeOfFermentation($originalGravity, $finalGravity);
     }
 
     public function testGravityCorrectionCalculatesCorrectly(): void
@@ -169,7 +169,7 @@ final class BeerTest extends TestCase
         $temperature = new Temperature(fahrenheit: 100.4);
         $specificGravity = new Gravity(specificGravity: 1.050);
         $calibrateTemperature = new Temperature(fahrenheit: 60);
-        $expected = 1.0562227410996516;
+        $expected = new Gravity(specificGravity: 1.0562227410996516);
         $actual = Beer::gravityCorrection($temperature, $specificGravity, $calibrateTemperature);
         $this->assertEquals($expected, $actual);
     }
