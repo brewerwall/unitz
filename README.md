@@ -242,6 +242,8 @@ Beer::maltColorUnit(Weight $weight, Color $color, Volume $volume): float
 International Bitterness Units (IBU) is the bitterness of the beer based on the alpha acid of the
 hops, weight of the hops, time in the boil, gravity of the wort, and volume of the wort.
 
+Based off Palmer's Calculation
+
 ```php
 Beer::internationalBitternessUnits(float $alphaAcid, Weight $weight, Time $time, Gravity $gravity, Volume $volume)
 ```
@@ -301,7 +303,7 @@ Beer::hopUtilization(Time $time, Gravity $gravity)
 
 #### Calories
 
-Determines th number of calories in a beer based on the original gravity, final gravity and the volume of the
+Determines the number of calories in a finished beer based on the original gravity, final gravity and the volume of the
 beer consumed.
 
 ```php

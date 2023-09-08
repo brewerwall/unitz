@@ -36,6 +36,8 @@ class Beer
     }
 
     /**
+     * Malt Color Unit (MCU)
+     *
      * Malt Color Unit (MCU) is an equation that helps determine what color a beer would be.
      *
      * @param \Unitz\Weight $weight
@@ -54,7 +56,11 @@ class Beer
     }
 
     /**
-     * IBU
+     * International Bitterness Units (IBU)
+     *
+     * International Bitterness Units (IBU) is the bitterness of the beer based on the alpha acid of the
+     * hops, weight of the hops, time in the boil, gravity of the wort, and volume of the wort.
+     *
      * Based off Palmer's Calculation
      *
      * @param float $alphaAcid
@@ -82,7 +88,9 @@ class Beer
     }
 
     /**
-     * AAU
+     * Alpha Acid Units (AAU)
+     *
+     * Alpha Acid Units (AAU) is the potential bitterness of the hops based on the alpha acid and weight.
      *
      * @param float $alphaAcid
      * @param \Unitz\Weight $weight
@@ -94,6 +102,11 @@ class Beer
     }
 
     /**
+     * Hop Utilization
+     *
+     * This is a hop utilization factor based on the Tinseth formula derived
+     * by [Glenn Tinseth](https://beersmith.com/blog/2011/02/10/beer-bitterness-and-ibus-with-glenn-tinseth-bshb-podcast-9/]).
+     *
      * @param \Unitz\Time $time
      * @param \Unitz\Gravity $gravity
      * @return float
@@ -105,7 +118,10 @@ class Beer
     }
 
     /**
-     * Calories per Volume.
+     * Calories
+     *
+     * Determines the number of calories in a finished beer based on the original gravity, final gravity and the volume of the
+     * beer consumed.
      *
      * @param \Unitz\Gravity $originalGravity
      * @param \Unitz\Gravity $finalGravity
@@ -205,7 +221,7 @@ class Beer
     }
 
     /**
-     * Gravity Correction based on Temperature of Sample and Hydrometer Calibration
+     * Gravity Correction based on the Sample Temperature, Sample Gravity and Hydrometer Calibration Temperature
      * Source: https://www.brewersfriend.com/hydrometer-temp/
      *
      * @param \Unitz\Temperature $sampleTemperature
