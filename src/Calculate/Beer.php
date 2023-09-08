@@ -16,6 +16,7 @@ class Beer
     public const ABV_STANDARD_FORMULA = 'abv_standard';
     public const ABV_ALTERNATE_FORMULA = 'abv_alternate';
     public const CALORIE_BASE_VOLUME_IN_OUNCE = 12;
+    public const DEFAULT_CALIBRATE_TEMPERATURE = 59;
 
     /**
      * Standard Reference Method (Srm) is the method for color assessment of wort or beer as published
@@ -114,7 +115,7 @@ class Beer
     public static function calories(
         Gravity $originalGravity,
         Gravity $finalGravity,
-        Volume $volume = new Volume(ounce: 12)
+        Volume $volume = new Volume(ounce: self::CALORIE_BASE_VOLUME_IN_OUNCE)
     ): float {
         $volumeMultiplier = $volume->getOunce() / self::CALORIE_BASE_VOLUME_IN_OUNCE;
         return $volumeMultiplier * ((6.9 * self::alcoholByWeight(
@@ -151,7 +152,7 @@ class Beer
      *
      * @param \Unitz\Gravity $originalGravity
      * @param \Unitz\Gravity $finalGravity
-     * @param string $abvVersion
+     * @param string $formulaVersion
      * @return float
      * @throws \UnexpectedValueException
      */
@@ -207,22 +208,21 @@ class Beer
      * Gravity Correction based on Temperature of Sample and Hydrometer Calibration
      * Source: https://www.brewersfriend.com/hydrometer-temp/
      *
-     * @param \Unitz\Temperature $temperature
+     * @param \Unitz\Temperature $sampleTemperature
      * @param \Unitz\Gravity $gravity
      * @param \Unitz\Temperature $calibrateTemperature //The temperature in which your hydrometer is calibrated to.
      * @return \Unitz\Gravity
      */
     public static function gravityCorrection(
-        Temperature $temperature,
+        Temperature $sampleTemperature,
         Gravity $gravity,
-        Temperature $calibrateTemperature = new Temperature(fahrenheit: 59)
+        Temperature $calibrateTemperature = new Temperature(fahrenheit: self::DEFAULT_CALIBRATE_TEMPERATURE)
     ): Gravity {
-        $specificGravity = $gravity->getSpecificGravity() * ((1.00130346 - 0.000134722124 * $temperature->getFahrenheit(
-                    ) + 0.00000204052596 * ($temperature->getFahrenheit(
-                        ) ** 2) - 0.00000000232820948 * ($temperature->getFahrenheit(
-                        ) ** 3)) / (1.00130346 - 0.000134722124 * $calibrateTemperature->getFahrenheit(
-                    ) + 0.00000204052596 * ($calibrateTemperature->getFahrenheit(
-                        ) ** 2) - 0.00000000232820948 * ($calibrateTemperature->getFahrenheit() ** 3)));
+        $sampleTemperatureFahrenheit = $sampleTemperature->getFahrenheit();
+        $calibrateTemperatureFahrenheit = $calibrateTemperature->getFahrenheit();
+        $specificGravity = $gravity->getSpecificGravity();
+
+        $specificGravity *= ((1.00130346 - 0.000134722124 * $sampleTemperatureFahrenheit + 0.00000204052596 * ($sampleTemperatureFahrenheit ** 2) - 0.00000000232820948 * ($sampleTemperatureFahrenheit ** 3)) / (1.00130346 - 0.000134722124 * $calibrateTemperatureFahrenheit + 0.00000204052596 * ($calibrateTemperatureFahrenheit ** 2) - 0.00000000232820948 * ($calibrateTemperatureFahrenheit ** 3)));
 
         return new Gravity(specificGravity: $specificGravity);
     }
