@@ -38,7 +38,7 @@ class Spirit
      *
      * @param \Unitz\Volume $volume
      * @param \Unitz\Distillate $wash
-     * @param float $stillEfficiency
+     * @param float $stillEfficiencyPercent
      * @return \Unitz\Volume
      */
     public static function distilledAlcoholVolume(
