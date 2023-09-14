@@ -46,7 +46,7 @@ class Spirit
         Distillate $wash,
         float $stillEfficiencyPercent
     ): Volume {
-        if ($stillEfficiency === 0.0) {
+        if ($stillEfficiencyPercent === 0.0) {
             throw new InvalidArgumentException('Still Efficiency cannot be zero.');
         }
 
