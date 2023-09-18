@@ -1,6 +1,6 @@
 {
   "name": "brewerwall/unitz",
-  "description": "A unit storage model to manage variables between units",
+  "description": "A unit storage model to manage values between units",
   "license": "MIT",
   "autoload": {
     "psr-4": {
