@@ -55,4 +55,27 @@ class SpiritTest extends TestCase
 
         Spirit::distilledAlcoholVolume($volume, $wash, $stillEfficiencyPercent);
     }
+
+    public function testDistilledRemainingWaterVolumeCalculatesCorrectly(): void
+    {
+        $volume = new Volume(liter: 20);
+        $wash = new Distillate(percentAlcohol: 9);
+        $stillEfficiencyPercent = 92;
+        $expected = new Volume(liter: 18.141304347826086);
+
+        $actual = Spirit::distilledRemainingWaterVolume($volume, $wash, $stillEfficiencyPercent);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testDistilledRemainingWaterVolumeThrowsInvalidArgumentExceptionWithZeroStillEfficiency(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Still Efficiency cannot be zero.');
+
+        $volume = new Volume(liter: 20);
+        $wash = new Distillate(percentAlcohol: 9);
+        $stillEfficiencyPercent = 0;
+
+        Spirit::distilledRemainingWaterVolume($volume, $wash, $stillEfficiencyPercent);
+    }
 }

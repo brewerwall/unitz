@@ -426,3 +426,23 @@ Spirit::distilledAlcoholVolume(Volume $volume, Distillate $wash, float $stillEff
 ##### Returns
 
 - `Volume` - Volume of the distilled alcohol
+
+---
+
+#### Distilled Remaining Water Volume
+
+Distilled Remaining Water Volume is a calculation to determine the volume of water remaining after distilling a spirit.
+
+```php
+Spirit::distilledRemainingWaterVolume(Volume $volume, Distillate $wash, float $stillEfficiencyPercent): Volume
+```
+
+##### Arguments
+
+- `Volume $volume` - Volume of the wash
+- `Distillate $wash` - Distillate of the wash
+- `float $stillEfficiencyPercent` - Still efficiency percentage
+
+##### Returns
+
+- `Volume` - Volume of the remaining water

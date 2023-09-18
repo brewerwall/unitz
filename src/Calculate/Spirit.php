@@ -40,6 +40,7 @@ class Spirit
      * @param \Unitz\Distillate $wash
      * @param float $stillEfficiencyPercent
      * @return \Unitz\Volume
+     * @throws \InvalidArgumentException
      */
     public static function distilledAlcoholVolume(
         Volume $volume,
@@ -52,6 +53,27 @@ class Spirit
 
         return new Volume(
             liter: ((0.95 * $volume->getLiter() * $wash->getPercentAlcohol() / $stillEfficiencyPercent) * 100) / 100
+        );
+    }
+
+    /**
+     * @param \Unitz\Volume $volume
+     * @param \Unitz\Distillate $wash
+     * @param float $stillEfficiencyPercent
+     * @return \Unitz\Volume
+     * @throws \InvalidArgumentException
+     */
+    public static function distilledRemainingWaterVolume(
+        Volume $volume,
+        Distillate $wash,
+        float $stillEfficiencyPercent
+    ): Volume {
+        return new Volume(
+            liter: $volume->getLiter() - self::distilledAlcoholVolume(
+                $volume,
+                $wash,
+                $stillEfficiencyPercent
+            )->getLiter()
         );
     }
 }
