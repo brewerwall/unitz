@@ -146,4 +146,18 @@ final class UnitzService extends BaseUnitz
             $this->getPreferences()
         );
     }
+
+    /**
+     * @param float|null $proof
+     * @param float|null $percentAlcohol
+     * @param float|null $userValue
+     * @return \Unitz\Distillate
+     */
+    public function makeDistillate(
+        ?float $proof = null,
+        ?float $percentAlcohol = null,
+        ?float $userValue = null
+    ): Distillate {
+        return new Distillate($proof, $percentAlcohol, $userValue, $this->getPreferences());
+    }
 }

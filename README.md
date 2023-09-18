@@ -99,10 +99,11 @@ $temperature->getFahrenheit(); // 76
 | Gravity     | Plato<br/>SpecificGravity<br/>Brix                                             |
 | Pressure    | Psi<br/>Bar                                                                    |
 | Temperature | Celsius<br/>Fahrenheit                                                         |
-| Volumne     | Ounce<br/>Gallon<br/>Barrel<br/>Milliliter<br/>Liter<br/>Hectoliter            |
+| Volume      | Ounce<br/>Gallon<br/>Barrel<br/>Milliliter<br/>Liter<br/>Hectoliter            |
 | Weight      | Ounce<br/>Pound<br/>Gram<br/>Kilogram                                          |
 | Color       | Srm<br/>Ebc<br/>Lovibond                                                       |
 | Time        | Millisecond<br/>Second<br/>Minute<br/>Hour<br/>Day<br/>Week<br/>Month<br/>Year |
+| Distillate  | Proof<br/>Alcohol Percent                                                      |
 
 ### Preferences
 
@@ -120,6 +121,7 @@ preference set, but can be overridden when instantiating a new unit.
     'Weight' => 'Pound',
     'Color' => 'Srm',
     'Time' => 'Minute',
+    'Distillate' => 'Proof',
 ];
 ```
 
@@ -380,3 +382,67 @@ Beer::gravityCorrection(Gravity $gravity, Temperature $temperature, Temperature 
 ##### Returns
 
 - `Gravity` - Corrected Gravity of Sample
+
+### Spirit
+
+This class will calculate Spirit related calculations.
+___
+
+#### Dilute Down To Desired Proof
+
+Dilute Down To Desired Proof is a calculation to determine how much water to add to a spirit to get to a desired proof.
+
+```php
+Spirit::diluteDownToDesiredProof(Proof $currentProof, Proof $desiredProof, Volume $currentVolume): Volume
+```
+
+##### Arguments
+
+- `Proof $currentProof` - Current Proof of the spirit
+- `Proof $desiredProof` - Desired Proof of the spirit
+- `Volume $currentVolume` - Current Volume of the spirit
+
+##### Returns
+
+- `Volume` - Volume of water to add to the spirit
+
+---
+
+#### Distilled Alcohol Volume
+
+Distilled Alcohol Volume is a calculation to determine the volume of alcohol distilled depending on the wash abv and
+still efficiency.
+
+```php
+Spirit::distilledAlcoholVolume(Volume $volume, Distillate $wash, float $stillEfficiencyPercent): Volume
+```
+
+##### Arguments
+
+- `Volume $volume` - Volume of the wash
+- `Distillate $wash` - Distillate of the wash
+- `float $stillEfficiencyPercent` - Still efficiency percentage
+
+##### Returns
+
+- `Volume` - Volume of the distilled alcohol
+
+---
+
+#### Distilled Remaining Water Volume
+
+Distilled Remaining Water Volume is a calculation to determine the volume of water remaining after distilling a spirit.
+
+```php
+Spirit::distilledRemainingWaterVolume(Volume $volume, Distillate $wash, float $stillEfficiencyPercent): Volume
+```
+
+##### Arguments
+
+- `Volume $volume` - Volume of the wash
+- `Distillate $wash` - Distillate of the wash
+- `float $stillEfficiencyPercent` - Still efficiency percentage
+
+##### Returns
+
+- `Volume` - Volume of the remaining water

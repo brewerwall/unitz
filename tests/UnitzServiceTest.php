@@ -218,4 +218,35 @@ final class UnitzServiceTest extends TestCase
         $actual = $time->getHour();
         $this->assertEquals($expected, $actual);
     }
+
+    public function testMakeProofWillReturnProofWithPreference(): void
+    {
+        $proof = 60;
+        $distillate = $this->makeUnitService(['Distillate' => 'Proof'])->makeDistillate(
+            proof: $proof
+        );
+        $expected = $proof;
+        $actual = $distillate->getValue();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testMakeProofWillSetProofWithPreferenceAndReturnTheSame(): void
+    {
+        $proof = 60;
+        $distillate = $this->makeUnitService(['Distillate' => 'Proof'])->makeDistillate(userValue: $proof);
+        $expected = $proof;
+        $actual = $distillate->getValue();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testMakeProofWillSetProofWithPreferenceAndNewSetValueAndReturnTheSame(): void
+    {
+        $proof = 60;
+        $newProof = 70;
+        $distillate = $this->makeUnitService(['Distillate' => 'Proof'])->makeDistillate(userValue: $proof);
+        $distillate->setValue($newProof);
+        $expected = $newProof;
+        $actual = $distillate->getProof();
+        $this->assertEquals($expected, $actual);
+    }
 }
