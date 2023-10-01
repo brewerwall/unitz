@@ -446,3 +446,25 @@ Spirit::distilledRemainingWaterVolume(Volume $volume, Distillate $wash, float $s
 ##### Returns
 
 - `Volume` - Volume of the remaining water
+
+### Water
+
+This class will calculate Water related calculations.
+___
+
+#### Parts Per Million (PPM)
+
+Parts Per Million (PPM) is a calculation to determine the amount of a substance in a solution.
+
+```php
+Water::partsPerMillion(float $amount, Volume $volume): float
+```
+
+##### Arguments
+
+- `Weight $substance` - Weight of the substance
+- `Volume $volume` - Volume of the water
+
+##### Returns
+
+- `float` - Parts Per Million (PPM) Value

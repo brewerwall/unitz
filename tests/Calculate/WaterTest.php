@@ -13,10 +13,10 @@ class WaterTest extends TestCase
     public function testPartsPerMillionCalculatesCorrectly(): void
     {
         $water = new Volume(milliliter: 500);
-        $salt = new Weight(gram: 5);
+        $substance = new Weight(gram: 5);
         $expected = 10000;
 
-        $actual = Water::partsPerMillion($salt, $water);
+        $actual = Water::partsPerMillion($substance, $water);
         $this->assertEquals($expected, $actual);
     }
 
@@ -26,8 +26,8 @@ class WaterTest extends TestCase
         $this->expectExceptionMessage('Water volume cannot be zero.');
 
         $water = new Volume(milliliter: 0);
-        $salt = new Weight(gram: 5);
+        $substance = new Weight(gram: 5);
 
-        Water::partsPerMillion($salt, $water);
+        Water::partsPerMillion($substance, $water);
     }
 }
