@@ -123,14 +123,6 @@ final class GravityTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testWillThrowExceptionWithNoValuesSet(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Only one Gravity type can be set at a time.');
-
-        new Gravity();
-    }
-
     public function testWillThrowExceptionWithTooManyValuesSet(): void
     {
         $this->expectException(InvalidArgumentException::class);

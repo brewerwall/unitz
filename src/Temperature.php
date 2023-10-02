@@ -15,7 +15,7 @@ class Temperature extends AbstractUnitz
         ?float $userValue = null,
         array $preferences = []
     ) {
-        if (!$this->hasOnlyOneValue([$fahrenheit, $celsius, $userValue])) {
+        if (!$this->hasOneOrNoneValue([$fahrenheit, $celsius, $userValue])) {
             throw new InvalidArgumentException('Only one Temperature type can be set at a time.');
         }
 

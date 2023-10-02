@@ -19,7 +19,7 @@ class Gravity extends AbstractUnitz
         ?float $userValue = null,
         array $preferences = []
     ) {
-        if (!$this->hasOnlyOneValue([$plato, $specificGravity, $brix, $userValue])) {
+        if (!$this->hasOneOrNoneValue([$plato, $specificGravity, $brix, $userValue])) {
             throw new InvalidArgumentException('Only one Gravity type can be set at a time.');
         }
 

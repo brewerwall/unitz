@@ -27,7 +27,7 @@ class Time extends AbstractUnitz
         ?float $userValue = null,
         array $preferences = []
     ) {
-        if (!$this->hasOnlyOneValue(
+        if (!$this->hasOneOrNoneValue(
             [$millisecond, $second, $minute, $hour, $day, $week, $month, $year, $userValue]
         )) {
             throw new InvalidArgumentException('Only one Time type can be set at a time.');
