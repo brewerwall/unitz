@@ -7,7 +7,7 @@ use Unitz\Rate\Boil;
 use Unitz\Time;
 use Unitz\Volume;
 
-class BoilRate extends TestCase
+class BoilTest extends TestCase
 {
     public function testFlowReturnsCorrectValue(): void
     {
