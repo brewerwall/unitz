@@ -58,10 +58,10 @@ class FlowTest extends TestCase
     public function testVolumeWithInvalidDenominatorUnitTypeThrowsRuntimeException(): void
     {
         $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessage('Method getBannana does not exist on Unitz\Time');
+        $this->expectExceptionMessage('Method getBanana does not exist on Unitz\Time');
 
         $flow = new Flow(new Volume(gallon: 3), new Time(minute: 1));
-        $flow->getGallonsPerBannanas();
+        $flow->getGallonsPerBananas();
     }
 
     public function testFlowReturnsCorrectValue(): void

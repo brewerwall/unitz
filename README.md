@@ -153,7 +153,7 @@ pattern of `$rate->get{Unit}Per{Unit}` for the respective units. Example using F
 
 ### Flow
 
-This class represent the amount of Volume over a period of Time.
+This class represent the amount of Volume flowed over a period of Time.
 
 ```php
 $flow = new Flow(new Volume(gallon: 5), new Time(hour: 1));
@@ -161,6 +161,20 @@ $flow = new Flow(new Volume(gallon: 5), new Time(hour: 1));
 $flow->getGallonPerHour(); // 5
 
 $flow->getGallonPerMinute(); // 0.083333333333333
+```
+
+___
+
+### Boil
+
+This class represent the amount of Volume boiled over a period of Time.
+
+```php
+$boil = new Boil(new Volume(gallon: 5), new Time(hour: 1));
+
+$boil->getGallonPerHour(); // 5
+
+$boil->getGallonPerMinute(); // 0.083333333333333
 ```
 
 ___
