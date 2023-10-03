@@ -4,6 +4,7 @@ namespace Unitz\Rate;
 
 use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\InflectorFactory;
+use ReflectionClass;
 use RuntimeException;
 use Unitz\BaseUnitz;
 
@@ -55,7 +56,7 @@ abstract class AbstractRate
         $numerator = $this->getUnitValue($this->numerator, $numeratorName);
         $denominator = $this->getUnitValue($this->denominator, $denominatorName);
 
-        $numeratorReflection = new \ReflectionClass($this->numerator);
+        $numeratorReflection = new ReflectionClass($this->numerator);
         $unitsClassName = $numeratorReflection->getName();
         $unitsClassShortName = $numeratorReflection->getShortName();
 
