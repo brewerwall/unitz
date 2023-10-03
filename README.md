@@ -146,6 +146,25 @@ $weight = new Weight(kilogram: 7.5629145);
 $kilogram = $weight->getKilogram(3);  // $kilogram = 7.563
 ```
 
+## Rate
+
+A way of representing a rate of change between two units. When accessing values of rates, all will follow the naming
+pattern of `$rate->get{Unit}Per{Unit}` for the respective units. Example using Flow: `$flow->getGallonPerHour()`
+
+### Flow
+
+This class represent the amount of Volume over a period of Time.
+
+```php
+$flow = new Flow(new Volume(gallon: 5), new Time(hour: 1));
+
+$flow->getGallonPerHour(); // 5
+
+$flow->getGallonPerMinute(); // 0.083333333333333
+```
+
+___
+
 ## Calculate
 
 A library of calculations that can be used with various Unitz classes.
