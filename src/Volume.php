@@ -23,7 +23,7 @@ class Volume extends AbstractUnitz
         ?float $userValue = null,
         array $preferences = []
     ) {
-        if (!$this->hasOnlyOneValue([$ounce, $gallon, $barrel, $milliliter, $liter, $hectoliter, $userValue])) {
+        if (!$this->hasOneOrNoneValue([$ounce, $gallon, $barrel, $milliliter, $liter, $hectoliter, $userValue])) {
             throw new InvalidArgumentException('Only one Volume type can be set at a time.');
         }
 

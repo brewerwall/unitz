@@ -93,14 +93,6 @@ final class ColorTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testWillThrowExceptionWithNoValuesSet(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Only one Color type can be set at a time.');
-
-        new Color();
-    }
-
     public function testWillThrowExceptionWithTooManyValuesSet(): void
     {
         $this->expectException(InvalidArgumentException::class);

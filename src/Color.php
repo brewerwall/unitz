@@ -17,7 +17,7 @@ class Color extends AbstractUnitz
         ?float $userValue = null,
         array $preferences = []
     ) {
-        if (!$this->hasOnlyOneValue([$srm, $ebc, $lovibond, $userValue])) {
+        if (!$this->hasOneOrNoneValue([$srm, $ebc, $lovibond, $userValue])) {
             throw new InvalidArgumentException('Only one Color type can be set at a time.');
         }
 

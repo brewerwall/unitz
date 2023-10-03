@@ -43,7 +43,7 @@ abstract class AbstractUnitz extends BaseUnitz
      * @param array $values
      * @return bool
      */
-    protected function hasOnlyOneValue(array $values): bool
+    protected function hasOneOrNoneValue(array $values): bool
     {
         $count = 0;
         foreach ($values as $value) {
@@ -52,7 +52,7 @@ abstract class AbstractUnitz extends BaseUnitz
             }
         }
 
-        return $count === 1;
+        return $count <= 1;
     }
 
     /**

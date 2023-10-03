@@ -15,7 +15,7 @@ class Pressure extends AbstractUnitz
         ?float $userValue = null,
         array $preferences = []
     ) {
-        if (!$this->hasOnlyOneValue([$bar, $psi, $userValue])) {
+        if (!$this->hasOneOrNoneValue([$bar, $psi, $userValue])) {
             throw new InvalidArgumentException('Only one Pressure type can be set at a time.');
         }
 

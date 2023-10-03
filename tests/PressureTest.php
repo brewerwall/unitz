@@ -65,14 +65,6 @@ final class PressureTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testWillThrowExceptionWithNoValuesSet(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Only one Pressure type can be set at a time.');
-
-        new Pressure();
-    }
-
     public function testWillThrowExceptionWithTooManyValuesSet(): void
     {
         $this->expectException(InvalidArgumentException::class);

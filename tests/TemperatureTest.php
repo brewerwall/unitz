@@ -65,14 +65,6 @@ final class TemperatureTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testWillThrowExceptionWithNoValuesSet(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Only one Temperature type can be set at a time.');
-
-        new Temperature();
-    }
-
     public function testWillThrowExceptionWithTooManyValuesSet(): void
     {
         $this->expectException(InvalidArgumentException::class);

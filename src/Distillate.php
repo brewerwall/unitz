@@ -15,7 +15,7 @@ class Distillate extends AbstractUnitz
         ?float $userValue = null,
         array $preferences = []
     ) {
-        if (!$this->hasOnlyOneValue([$proof, $percentAlcohol, $userValue])) {
+        if (!$this->hasOneOrNoneValue([$proof, $percentAlcohol, $userValue])) {
             throw new InvalidArgumentException('Only one Distillate type can be set at a time.');
         }
 
