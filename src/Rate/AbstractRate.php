@@ -18,17 +18,30 @@ abstract class AbstractRate
         $this->inflector = InflectorFactory::create()->build();
     }
 
+    /**
+     * @param \Unitz\BaseUnitz $numerator
+     * @return void
+     */
     protected function setNumerator(BaseUnitz $numerator): void
     {
         $this->numerator = $numerator;
     }
 
+    /**
+     * @param \Unitz\BaseUnitz $denominator
+     * @return void
+     */
     protected function setDenominator(BaseUnitz $denominator): void
     {
         $this->denominator = $denominator;
     }
 
-    public function __call(string $name, array $arguments)
+    /**
+     * @param string $name
+     * @param array $arguments
+     * @return \Unitz\BaseUnitz
+     */
+    public function __call(string $name, array $arguments): BaseUnitz
     {
         $getPosition = strpos($name, 'get');
         if ($getPosition === false || $getPosition !== 0) {
