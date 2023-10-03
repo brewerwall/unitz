@@ -63,4 +63,10 @@ class FlowTest extends TestCase
         $flow = new Flow(new Volume(gallon: 3), new Time(minute: 1));
         $flow->getGallonsPerBannanas();
     }
+
+    public function testFlowReturnsCorrectValue(): void
+    {
+        $flow = new Flow(new Volume(gallon: 3), new Time(minute: 1));
+        $this->assertEquals(new Volume(gallon: 3), $flow->getGallonsPerMinute());
+    }
 }

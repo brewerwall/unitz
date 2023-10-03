@@ -66,8 +66,12 @@ abstract class AbstractRate
         }
         $denominator = $this->denominator->{"get$denominatorName"}();
 
-        $unitsClass = get_class($this->numerator);
+        $numeratorReflection = new \ReflectionClass($this->numerator);
+        $unitsClassName = $numeratorReflection->getName();
+        $unitsClassShortName = $numeratorReflection->getShortName();
 
-        return (new $unitsClass())->{"set$numeratorName"}($numerator / $denominator);
+        return (new $unitsClassName(preferences: [$unitsClassShortName => $numeratorName]))->{"set$numeratorName"}(
+            $numerator / $denominator
+        );
     }
 }
