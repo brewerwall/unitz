@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Calculate;
+namespace Unitz\Tests\Calculate;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;

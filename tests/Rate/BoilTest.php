@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Rate;
+namespace Unitz\Tests\Rate;
 
 use PHPUnit\Framework\TestCase;
 use Unitz\Rate\Boil;
