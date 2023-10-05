@@ -12,7 +12,8 @@ class BaseUnitz
         'Weight' => 'Pound',
         'Color' => 'Srm',
         'Time' => 'Minute',
-        'Distillate' => 'Proof'
+        'Distillate' => 'Proof',
+        'Length' => 'Foot',
     ];
 
     private array $preferences;
