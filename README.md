@@ -94,16 +94,17 @@ $temperature->getFahrenheit(); // 76
 
 ### Available Units
 
-| Unit        | Types                                                                          |
-|-------------|--------------------------------------------------------------------------------|
-| Gravity     | Plato<br/>SpecificGravity<br/>Brix                                             |
-| Pressure    | Psi<br/>Bar                                                                    |
-| Temperature | Celsius<br/>Fahrenheit                                                         |
-| Volume      | Ounce<br/>Gallon<br/>Barrel<br/>Milliliter<br/>Liter<br/>Hectoliter            |
-| Weight      | Ounce<br/>Pound<br/>Gram<br/>Kilogram                                          |
-| Color       | Srm<br/>Ebc<br/>Lovibond                                                       |
-| Time        | Millisecond<br/>Second<br/>Minute<br/>Hour<br/>Day<br/>Week<br/>Month<br/>Year |
-| Distillate  | Proof<br/>Alcohol Percent                                                      |
+| Unit        | Types                                                                                 |
+|-------------|---------------------------------------------------------------------------------------|
+| Gravity     | Plato<br/>SpecificGravity<br/>Brix                                                    |
+| Pressure    | Psi<br/>Bar                                                                           |
+| Temperature | Celsius<br/>Fahrenheit                                                                |
+| Volume      | Ounce<br/>Gallon<br/>Barrel<br/>Milliliter<br/>Liter<br/>Hectoliter                   |
+| Weight      | Ounce<br/>Pound<br/>Gram<br/>Kilogram                                                 |
+| Color       | Srm<br/>Ebc<br/>Lovibond                                                              |
+| Time        | Millisecond<br/>Second<br/>Minute<br/>Hour<br/>Day<br/>Week<br/>Month<br/>Year        |
+| Distillate  | Proof<br/>Alcohol Percent                                                             |
+| Length      | Inch<br/>Foot<br/>Yard<br/>Mile<br/>Millimeter<br/>Centimeter<br/>Meter<br/>Kilometer |
 
 ### Preferences
 
