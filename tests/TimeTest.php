@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Unitz\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Unitz\Time;
