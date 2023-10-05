@@ -4,8 +4,8 @@
 
 ## Introduction
 
-Unitz is a way to address easy conversions among various brewing/fermentation units. A utility
-that helps convert a unit to all types and agnostic to what type of unit it is.
+Unitz is a way to address easy conversions among various measurable units. A utility
+that helps convert a unit to all types and agnostic to what type of unit it was originally set as.
 
 ### Installation
 
