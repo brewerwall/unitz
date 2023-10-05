@@ -94,16 +94,17 @@ $temperature->getFahrenheit(); // 76
 
 ### Available Units
 
-| Unit        | Types                                                                          |
-|-------------|--------------------------------------------------------------------------------|
-| Gravity     | Plato<br/>SpecificGravity<br/>Brix                                             |
-| Pressure    | Psi<br/>Bar                                                                    |
-| Temperature | Celsius<br/>Fahrenheit                                                         |
-| Volume      | Ounce<br/>Gallon<br/>Barrel<br/>Milliliter<br/>Liter<br/>Hectoliter            |
-| Weight      | Ounce<br/>Pound<br/>Gram<br/>Kilogram                                          |
-| Color       | Srm<br/>Ebc<br/>Lovibond                                                       |
-| Time        | Millisecond<br/>Second<br/>Minute<br/>Hour<br/>Day<br/>Week<br/>Month<br/>Year |
-| Distillate  | Proof<br/>Alcohol Percent                                                      |
+| Unit        | Types                                                            |
+|-------------|------------------------------------------------------------------|
+| Gravity     | Plato, SpecificGravity, Brix                                     |
+| Pressure    | Psi, Bar                                                         |
+| Temperature | Celsius, Fahrenheit                                              |
+| Volume      | Ounce, Gallon, Barrel, Milliliter, Liter, Hectoliter             |
+| Weight      | Ounce, Pound, Gram, Kilogram                                     |
+| Color       | Srm, Ebc, Lovibond                                               |
+| Time        | Millisecond, Second, Minute, Hour, Day, Week, Month, Year        |
+| Distillate  | Proof, Alcohol Percent                                           |
+| Length      | Inch, Foot, Yard, Mile, Millimeter, Centimeter, Meter, Kilometer |
 
 ### Preferences
 
@@ -122,6 +123,7 @@ preference set, but can be overridden when instantiating a new unit.
     'Color' => 'Srm',
     'Time' => 'Minute',
     'Distillate' => 'Proof',
+    'Length' => 'Foot',
 ];
 ```
 
