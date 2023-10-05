@@ -123,6 +123,7 @@ preference set, but can be overridden when instantiating a new unit.
     'Color' => 'Srm',
     'Time' => 'Minute',
     'Distillate' => 'Proof',
+    'Length' => 'Foot',
 ];
 ```
 
