@@ -181,6 +181,20 @@ $boil->getGallonPerMinute(); // 0.083333333333333
 
 ___
 
+### Speed
+
+This class represent the amount of Length traveled over a period of Time.
+
+```php
+$speed = new Speed(new Length(foot: 5), new Time(minute: 1));
+
+$speed->getFeetPerMinute(); // 5
+
+$boil->getFeetPerHour(); // 300
+```
+
+___
+
 ## Calculate
 
 A library of calculations that can be used with various Unitz classes.
