@@ -10,7 +10,7 @@ use Unitz\Volume;
 
 class FlowTest extends TestCase
 {
-    public function testVolumeWithMissingGetPrefixThrowsRuntimeException(): void
+    public function testFlowWithMissingGetPrefixThrowsRuntimeException(): void
     {
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('All methods must start with "get"');
@@ -19,7 +19,7 @@ class FlowTest extends TestCase
         $flow->gimmeGallonsPerMinute();
     }
 
-    public function testVolumeWithMissingPerDividerThrowsRuntimeException(): void
+    public function testFlowWithMissingPerDividerThrowsRuntimeException(): void
     {
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('All methods must contain "Per" between the two units');
@@ -28,7 +28,7 @@ class FlowTest extends TestCase
         $flow->getGallonsByMinute();
     }
 
-    public function testVolumeWithMissingFirstUnitThrowsRuntimeException(): void
+    public function testFlowWithMissingFirstUnitThrowsRuntimeException(): void
     {
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('All methods must contain two units separated by "Per", getPerMinute() has 1');
@@ -37,7 +37,7 @@ class FlowTest extends TestCase
         $flow->getPerMinute();
     }
 
-    public function testVolumeWithMissingSecondUnitThrowsRuntimeException(): void
+    public function testFlowWithMissingSecondUnitThrowsRuntimeException(): void
     {
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('All methods must contain two units separated by "Per", getGallonsPer() has 1');
@@ -46,7 +46,7 @@ class FlowTest extends TestCase
         $flow->getGallonsPer();
     }
 
-    public function testVolumeWithInvalidNumeratorUnitTypeThrowsRuntimeException(): void
+    public function testFlowWithInvalidNumeratorUnitTypeThrowsRuntimeException(): void
     {
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('Method getMonkey does not exist on Unitz\Volume');
@@ -55,7 +55,7 @@ class FlowTest extends TestCase
         $flow->getMonkeysPerMinute();
     }
 
-    public function testVolumeWithInvalidDenominatorUnitTypeThrowsRuntimeException(): void
+    public function testFlowWithInvalidDenominatorUnitTypeThrowsRuntimeException(): void
     {
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('Method getBanana does not exist on Unitz\Time');
@@ -68,5 +68,11 @@ class FlowTest extends TestCase
     {
         $flow = new Flow(new Volume(gallon: 3), new Time(minute: 1));
         $this->assertEquals(new Volume(gallon: 3), $flow->getGallonsPerMinute());
+    }
+
+    public function testFlowReturnsCorrectValueWithDifferentUnitsOfTime(): void
+    {
+        $flow = new Flow(new Volume(gallon: 3), new Time(minute: 1));
+        $this->assertEquals(new Volume(gallon: 180), $flow->getGallonsPerHour());
     }
 }
