@@ -506,7 +506,7 @@ ___
 Parts Per Million (PPM) is a calculation to determine the amount of a substance in a solution.
 
 ```php
-Water::partsPerMillion(float $amount, Volume $volume): float
+Water::partsPerMillion(Weight $substance, Volume $volume): float
 ```
 
 ##### Arguments
@@ -517,3 +517,42 @@ Water::partsPerMillion(float $amount, Volume $volume): float
 ##### Returns
 
 - `float` - Parts Per Million (PPM) Value
+
+---
+
+#### Boil Off Volume
+
+Boil Off Volume determines the Volume boiled off based on Boil Rate and Time.
+
+```php
+Water::boilOffVolume(Boil $boilRate, Time $time): Volume
+```
+
+##### Arguments
+
+- `Boil $boilRate` - Boil Rate of your system
+- `Time $time` - Time of the boil
+
+##### Returns
+
+- `Volume` - Volume that has been boiled off
+
+---
+
+#### Post Boil Volume
+
+Post Boil Volume determines the Volume solution remaining after a Pre Boil Volume, Boil Rate and Time are given.
+
+```php
+Water::boilOffVolume(Volume postBoilVolume, Boil $boilRate, Time $time): Volume
+```
+
+##### Arguments
+
+- `Volume $preBoilVolume` - Volume of solution before it's boiled
+- `Boil $boilRate` - Boil Rate of your system
+- `Time $time` - Time of the boil
+
+##### Returns
+
+- `Volume` - Volume that remains from the boil
